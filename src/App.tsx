@@ -1,13 +1,13 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
-import Paths from "./routes/routes";
 import { Header } from "./components";
+import RoutesPaths from "./routes/routes";
 
 function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Header />
-			<Paths />
+			<RoutesPaths />
 		</ThemeProvider>
 	);
 }

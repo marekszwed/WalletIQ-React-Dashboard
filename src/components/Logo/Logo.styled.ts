@@ -1,10 +1,10 @@
 import { NavLink } from "react-router";
 import styled from "styled-components";
 
-export const Logo = styled.h1`
+export const Logo = styled.img`
 	display: flex;
-	font-size: ${({ theme }) => theme.fontSize.header};
-	color: ${({ theme }) => theme.primaryColors.black};
+	width: 5rem;
+	height: 5rem;
 	margin: 1rem 2rem;
 `;
 

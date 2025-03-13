@@ -1,9 +1,10 @@
 import * as S from "./Logo.styled";
+import walletIQLogo from "/WalletIQLogo.svg";
 
 function Logo() {
 	return (
 		<S.Navlink to="/">
-			<S.Logo>walletiq</S.Logo>
+			<S.Logo src={walletIQLogo} />
 		</S.Navlink>
 	);
 }
