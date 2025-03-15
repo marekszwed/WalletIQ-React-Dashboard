@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import * as S from "./HeaderButton.styled";
 
 interface Props {
@@ -8,15 +9,13 @@ interface Props {
 
 function Button({ href, text, className }: Props) {
 	const buttonProps = { className };
+	const button = <S.ButtonStyled {...buttonProps}>{text}</S.ButtonStyled>;
+
 	if (href) {
-		return (
-			<S.Navlink to={href}>
-				<S.ButtonStyled {...buttonProps}>{text}</S.ButtonStyled>
-			</S.Navlink>
-		);
-	} else {
-		return <S.ButtonStyled {...buttonProps}>{text}</S.ButtonStyled>;
+		return <NavLink to={href}>{button}</NavLink>;
 	}
+
+	return button;
 }
 
 export default Button;

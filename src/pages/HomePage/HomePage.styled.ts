@@ -6,5 +6,5 @@ export const HomePageStyled = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-  background-color: ${({theme}) => theme.primaryColors.background};
+	background-color: ${({ theme }) => theme.primaryColors.white100};
 `;

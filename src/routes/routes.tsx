@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import HomePage from "../pages/HomePage/HomePage";
 
-function Paths() {
+function RoutesPaths() {
 	return (
 		<Routes>
 			<Route index path="/" element={<HomePage />} />
@@ -9,4 +9,4 @@ function Paths() {
 	);
 }
 
-export default Paths;
+export default RoutesPaths;

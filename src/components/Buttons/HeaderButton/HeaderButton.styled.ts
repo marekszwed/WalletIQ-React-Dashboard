@@ -1,4 +1,3 @@
-import { NavLink } from "react-router";
 import styled from "styled-components";
 
 export const ButtonStyled = styled.button`
@@ -8,17 +7,14 @@ export const ButtonStyled = styled.button`
 	padding: 1rem 2.4rem;
 	font-size: ${({ theme }) => theme.fontSize.normal};
 	background-color: ${({ theme }) => theme.primaryColors.blue};
-	color: #fff;
+	color: ${({ theme }) => theme.primaryColors.white};
 	border-radius: 1rem;
-	border: 1px solid transparent;
+	border: ${({ theme }) => theme.border.small} solid
+		${({ theme }) => theme.primaryColors.transparent};
 	transition: background-color 0.3s;
 	overflow: hidden;
 
 	&:hover {
-		background-color: ${({ theme }) => theme.primaryColors.hover.darkBlue};
+		background-color: ${({ theme }) => theme.primaryColors.hover.blue100};
 	}
-`;
-
-export const Navlink = styled(NavLink)`
-	text-decoration: none;
 `;

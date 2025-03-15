@@ -7,7 +7,7 @@ export const HeaderStyled = styled.header`
 	align-items: center;
 	justify-content: space-between;
 	width: 100vw;
-	background-color: ${({ theme }) => theme.primaryColors.background};
+	background-color: ${({ theme }) => theme.primaryColors.white100};
 `;
 
 export const ButtonsContainer = styled.div`
