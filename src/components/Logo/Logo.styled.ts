@@ -5,7 +5,7 @@ export const Logo = styled.img`
 	display: flex;
 	width: 5rem;
 	height: 5rem;
-	margin: 1rem 2rem;
+	margin: ${({ theme }) => `${theme.margin.m1} ${theme.margin.m2}`};
 `;
 
 export const Navlink = styled(NavLink)`
