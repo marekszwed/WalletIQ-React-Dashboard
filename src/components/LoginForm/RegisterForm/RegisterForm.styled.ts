@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HeaderButton from "../../ReusableComponents/HeaderButton";
-import CustomError from "../../ReusableComponents/CustomError";
+import HeaderButton from "../../Common/HeaderButton";
+import CustomError from "../../Common/CustomError";
 
 export const Form = styled.form`
 	position: relative;
@@ -30,14 +30,14 @@ export const RowContainer = styled(InputContainer)`
 `;
 
 export const Label = styled.label`
-	font-size: ${({ theme }) => theme.fontSize.fs_normal};
+	font-size: ${({ theme }) => theme.fontSize.f_normal};
 	padding-left: ${({ theme }) => theme.padding.p1};
 	padding-bottom: ${({ theme }) => theme.padding.p1};
 `;
 
 export const Input = styled.input`
 	padding: ${({ theme }) => `${theme.padding.p1} ${theme.padding.p1}`};
-	font-size: ${({ theme }) => theme.fontSize.fs_normal};
+	font-size: ${({ theme }) => theme.fontSize.f_normal};
 	border-radius: ${({ theme }) => theme.border.b1};
 	border: none;
 `;

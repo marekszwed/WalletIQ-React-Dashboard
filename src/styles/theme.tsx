@@ -19,10 +19,10 @@ export const theme = {
 		
 	},
 	fontSize: {
-		fs1_4: "1.4rem",
-		fs_normal: "1.6rem",
-		fs_h2: "3rem",
-		fs4_2: "4.2rem",
+		f1_4: "1.4rem",
+		f_normal: "1.6rem",
+		f_h2: "3rem",
+		f4_2: "4.2rem",
 	},
 	border: {
 		b_1: ".1rem",
