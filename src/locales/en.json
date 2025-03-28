@@ -1,0 +1,10 @@
+{
+	"Global": {
+		"login": "Login",
+		"logout": "Logout"
+	},
+	"LoginForm": {
+		"welcome": "Welcome",
+		"info": "Sign in to your account or create a new one"
+	}
+}
