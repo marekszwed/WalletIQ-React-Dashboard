@@ -1,11 +1,12 @@
 import { useLocation } from "react-router";
-import Button from "../ReusableComponents/HeaderButton";
+import Button from "../Common/HeaderButton";
 import Logo from "../Logo";
 import * as S from "./Header.styled";
+import { Routes } from "../../constants/constants";
 
 function Header() {
 	const location = useLocation();
-	const isLoginPage = location.pathname === "/login";
+	const isLoginPage = location.pathname === Routes.login;
 
 	return (
 		<S.HeaderStyled>

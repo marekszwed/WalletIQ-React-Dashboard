@@ -2,9 +2,17 @@ import * as S from "./RegisterForm.styled";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validationSchema } from "../schema";
 import { registerUser } from "../formSlice";
-import { AuthForm } from "../../../helpers/types";
+import { registerSchema } from "./registerSchema";
+import { isFulfilled, isRejected } from "@reduxjs/toolkit";
+
+interface RegisterFormTypes {
+	firstName: string;
+	surname: string;
+	email: string;
+	password: string;
+	confirmPassword: string;
+}
 
 function RegisterForm() {
 	const dispatch = useDispatch();
@@ -13,14 +21,24 @@ function RegisterForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<AuthForm>({
-		resolver: yupResolver(validationSchema(true)),
+	} = useForm<RegisterFormTypes>({
+		resolver: yupResolver(registerSchema),
 	});
 
-	const onSubmit = (data: AuthForm) => {
-		dispatch(registerUser(data));
-		console.log(data);
-	};
+	async function onSubmit(data: RegisterFormTypes) {
+		try {
+			const result = await dispatch(registerUser(data));
+			console.log(result);
+
+			if (isFulfilled(result)) {
+				console.log("Data submitted correctly", data);
+			} else if (isRejected(result)) {
+				console.log("Data transmitted incorrectly", data);
+			}
+		} catch (error) {
+			console.error("An error occurred while logging in:", error);
+		}
+	}
 
 	return (
 		<S.Form onSubmit={handleSubmit(onSubmit)}>

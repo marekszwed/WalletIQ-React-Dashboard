@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HeaderButton from "../../ReusableComponents/HeaderButton";
+import HeaderButton from "../../Common/HeaderButton";
 
 export const CardHeader = styled.div`
 	position: relative;
@@ -12,7 +12,7 @@ export const CardHeader = styled.div`
 `;
 export const CardTitle = styled.h2`
 	display: flex;
-	font-size: ${({ theme }) => theme.fontSize.fs_h2};
+	font-size: ${({ theme }) => theme.fontSize.f_h2};
 	margin-top: ${({ theme }) => theme.margin.m1};
 	margin-bottom: ${({ theme }) => theme.margin.m_5};
 	padding-inline: auto;
@@ -20,7 +20,7 @@ export const CardTitle = styled.h2`
 
 export const CardDescription = styled.p`
 	display: flex;
-	font-size: ${({ theme }) => theme.fontSize.fs_normal};
+	font-size: ${({ theme }) => theme.fontSize.f_normal};
 	margin-top: 0;
 `;
 

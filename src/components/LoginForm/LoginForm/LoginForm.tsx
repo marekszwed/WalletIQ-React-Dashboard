@@ -2,9 +2,14 @@ import * as S from "./LoginForm.styled";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validationSchema } from "../schema";
 import { loginUser } from "../formSlice";
-import { AuthForm } from "../../../helpers/types";
+import { loginSchema } from "./loginSchema";
+import { isFulfilled, isRejected } from "@reduxjs/toolkit";
+
+interface LoginFormTypes {
+	email: string;
+	password: string;
+}
 
 function LoginForm() {
 	const dispatch = useDispatch();
@@ -13,14 +18,24 @@ function LoginForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<AuthForm>({
-		resolver: yupResolver(validationSchema(false)),
+	} = useForm<LoginFormTypes>({
+		resolver: yupResolver(loginSchema),
 	});
 
-	const onSubmit = (data: AuthForm) => {
-		dispatch(loginUser(data));
-		console.log("Dane przekazane do loginUser:", data);
-	};
+	async function onSubmit(data: LoginFormTypes) {
+		try {
+			const result = await dispatch(loginUser(data));
+			console.log(result);
+
+			if (isFulfilled(result)) {
+				console.log("Data submitted correctly", data);
+			} else if (isRejected(result)) {
+				console.log("Data transmitted incorrectly", data);
+			}
+		} catch (error) {
+			console.error("An error occurred while logging in:", error);
+		}
+	}
 
 	return (
 		<S.Form onSubmit={handleSubmit(onSubmit)}>

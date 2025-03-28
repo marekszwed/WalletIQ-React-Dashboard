@@ -5,7 +5,7 @@ interface UserState {
 	surname?: string;
 	email: string;
 	password: string;
-	isAuthentificated: boolean;
+	isAuthenticated: boolean;
 }
 
 const initialState: UserState = {
@@ -13,7 +13,7 @@ const initialState: UserState = {
 	surname: "",
 	email: "",
 	password: "",
-	isAuthentificated: false,
+	isAuthenticated: false,
 };
 
 const formSlice = createSlice({
@@ -24,19 +24,18 @@ const formSlice = createSlice({
 			state,
 			action: PayloadAction<Pick<UserState, "email" | "password">>
 		) => {
-			console.log("Akcja loginUser wykonana z payloadem:", action.payload);
 			state.email = action.payload.email;
 			state.password = action.payload.password;
-			state.isAuthentificated = true;
+			state.isAuthenticated = true;
 		},
 		registerUser: (
 			state,
-			action: PayloadAction<Omit<UserState, "isAuthentificated">>
+			action: PayloadAction<Omit<UserState, "isAuthenticated">>
 		) => {
 			return {
 				...state,
 				...action.payload,
-				isAuthentificated: true,
+				isAuthenticated: true,
 			};
 		},
 	},
