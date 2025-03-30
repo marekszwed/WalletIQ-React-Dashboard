@@ -4,19 +4,21 @@ export const theme = {
 		white100: "#F1F1F1",
 		white200: "#e6e3e3",
 		white300: "#cecbcb",
-		blue100: "#DBE2EF",
-		blue200: "#3F72AF",
 		blue300: "#2e63a5",
-		blue500: "#112D4E",
 		black: "#000",
 		transparent: "transparent",
 		error: "#be0303",
+		palette: {
+			white50: "#F9F7F7",
+			blue100: "#DBE2EF",
+			blue600: "#3F72AF",
+			blue800: "#112D4E",
+		},
 		hover: {
 			blue: "#5087C2",
 			blue100: "#2C5A92",
 			grey: " #888888",
 		},
-		
 	},
 	fontSize: {
 		f1_4: "1.4rem",
@@ -32,6 +34,7 @@ export const theme = {
 		p_8: ".8rem",
 		p1: "1rem",
 		p2: "2rem",
+		p2_3: "2.3rem",
 		p2_4: "2.4rem",
 		p3: "3rem",
 		p4: "4rem",

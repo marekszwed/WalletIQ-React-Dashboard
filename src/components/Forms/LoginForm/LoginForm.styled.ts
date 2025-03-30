@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HeaderButton from "../../Common/HeaderButton";
-import CustomError from "../../Common/CustomError";
+import HeaderButton from "../../common/HeaderButton";
+import CustomError from "../../common/CustomError";
 
 export const Form = styled.form`
 	position: relative;
@@ -10,23 +10,11 @@ export const Form = styled.form`
 	margin-top: ${({ theme }) => theme.margin.m3};
 `;
 
-export const PeronalInfoContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	gap: 1rem;
-`;
-
 export const InputContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	margin-bottom: ${({ theme }) => theme.margin.m3};
-`;
-
-export const RowContainer = styled(InputContainer)`
-	position: relative;
-	display: flex;
+	margin-bottom: ${({ theme }) => theme.margin.m4};
 `;
 
 export const Label = styled.label`
