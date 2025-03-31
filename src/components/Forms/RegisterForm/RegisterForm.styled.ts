@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HeaderButton from "../../common/HeaderButton";
-import CustomError from "../../common/CustomError";
+import CustomError from "../../common/CustomError/CustomError";
+import HeaderButton from "../../common/HeaderButton/HeaderButton";
 
 export const Form = styled.form`
 	position: relative;

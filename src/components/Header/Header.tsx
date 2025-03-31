@@ -1,8 +1,8 @@
 import * as S from "./Header.styled";
 import { useLocation } from "react-router-dom";
 import { Routes } from "../../constants/constants";
-import Button from "../common/HeaderButton";
 import Logo from "../Logo";
+import HeaderButton from "../common/HeaderButton/HeaderButton";
 
 function Header() {
 	const location = useLocation();
@@ -14,7 +14,7 @@ function Header() {
 			<Logo />
 			{!isLoginPage && (
 				<S.ButtonsContainer>
-					<Button
+					<HeaderButton
 						href={isDashboard ? "/" : "/login"}
 						text={!isDashboard ? "Zaloguj się" : "Wyloguj się"}
 					/>
