@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HeaderButton from "../../common/HeaderButton/HeaderButton";
+import HeaderButton from "../../common/HeaderButton";
 
 export const CardHeader = styled.div`
 	position: relative;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as S from "./Dashboard.styled";
-import SideBar from "../../components/SideBar/SideBar";
 import { Sling as Hamburger } from "hamburger-react";
+import SideBar from "../../components/SideBar";
 
 function Dashboard() {
 	const [isOpen, setiIsOpen] = useState(false);
