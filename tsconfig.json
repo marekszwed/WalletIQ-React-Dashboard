@@ -4,7 +4,7 @@
 		"paths": {
 			"@/*": ["components/*"],
 			"@common/*": ["common/*"],
-			"@contstants/*": ["constants/*"],
+			"@constants/*": ["constants/*"],
 			"@context/*": ["context/*"],
 			"@helpers/*": ["helpers/*"],
 			"@locales/*": ["locales/*"],
