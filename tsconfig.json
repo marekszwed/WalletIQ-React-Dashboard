@@ -3,8 +3,8 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@/*": ["components/*"],
-			"@Common/*": ["Common/*"],
-			"@contstants/*": ["constants/*"],
+			"@common/*": ["components/common/*"],
+			"@constants/*": ["constants/*"],
 			"@context/*": ["context/*"],
 			"@helpers/*": ["helpers/*"],
 			"@locales/*": ["locales/*"],

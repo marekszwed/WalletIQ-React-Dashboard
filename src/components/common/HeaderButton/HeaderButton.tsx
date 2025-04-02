@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import * as S from "./HeaderButton.styled";
 
 interface Props {
@@ -11,17 +11,20 @@ interface Props {
 
 function HeaderButton({ type, href, text, className, onClick }: Props) {
 	const buttonProps = { className, onClick };
-	const button = <S.ButtonStyled {...buttonProps}>{text}</S.ButtonStyled>;
 
 	if (href) {
 		return (
-			<NavLink type={type} to={href}>
-				{button}
+			<NavLink to={href}>
+				<S.ButtonStyled {...buttonProps}>{text}</S.ButtonStyled>
 			</NavLink>
 		);
+	} else {
+		return (
+			<S.ButtonStyled type={type} {...buttonProps}>
+				{text}
+			</S.ButtonStyled>
+		);
 	}
-
-	return button;
 }
 
 export default HeaderButton;

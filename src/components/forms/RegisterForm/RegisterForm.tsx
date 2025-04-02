@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../formSlice";
 import { registerSchema } from "./registerSchema";
-import { isFulfilled, isRejected } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterFormTypes {
 	firstName: string;
@@ -16,6 +16,7 @@ interface RegisterFormTypes {
 
 function RegisterForm() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -28,11 +29,11 @@ function RegisterForm() {
 	async function onSubmit(data: RegisterFormTypes) {
 		try {
 			const result = await dispatch(registerUser(data));
-			console.log(result);
 
-			if (isFulfilled(result)) {
+			if (result.type === "auth/registerUser") {
 				console.log("Data submitted correctly", data);
-			} else if (isRejected(result)) {
+				navigate("/dashboard");
+			} else {
 				console.log("Data transmitted incorrectly", data);
 			}
 		} catch (error) {
