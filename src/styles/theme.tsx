@@ -42,6 +42,8 @@ export const theme = {
 		p6: "6rem",
 		p7: "7rem",
 		p8: "8rem",
+		p9: "9rem",
+		p10: "10rem",
 	},
 	margin: {
 		m_5: ".5rem",
@@ -53,5 +55,8 @@ export const theme = {
 		m6: "6rem",
 		m7: "7rem",
 		m8: "8rem",
+	},
+	zindex: {
+		header: "6",
 	},
 } as const;

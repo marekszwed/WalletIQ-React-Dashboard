@@ -1,20 +1,20 @@
 import styled from "styled-components";
-import CustomError from "../../common/CustomError";
-import HeaderButton from "../../common/HeaderButton";
 import {
 	FormLayout,
 	InputContainerLayout,
 	InputLayout,
 	LabelLayout,
 } from "../../../styles/mixin";
+import HeaderButton from "../../common/HeaderButton";
+import CustomError from "../../common/CustomError";
 
 export const Form = styled.form`
 	${FormLayout}
+	max-width: 40rem;
 `;
 
 export const InputContainer = styled.div`
 	${InputContainerLayout}
-	margin-bottom: ${({ theme }) => theme.margin.m4};
 `;
 
 export const Label = styled.label`
