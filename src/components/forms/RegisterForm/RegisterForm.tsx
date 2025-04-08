@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../formSlice";
 import { registerSchema } from "./registerSchema";
 import { useNavigate } from "react-router-dom";
+import LabelFormLayout from "../../Layout/LabelFormLayout";
+import InputFormLayout from "../../Layout/InputFormLayout";
+import FormLayout from "../../Layout/FormLayout";
 
 interface RegisterFormTypes {
 	firstName: string;
@@ -42,16 +45,20 @@ function RegisterForm() {
 	}
 
 	return (
-		<S.Form onSubmit={handleSubmit(onSubmit)}>
+		<FormLayout onSubmit={handleSubmit(onSubmit)}>
 			<S.PeronalInfoContainer>
 				<S.RowContainer>
-					<S.Label htmlFor="name">First name</S.Label>
-					<S.Input {...register("firstName")} id="name" placeholder="Name" />
+					<LabelFormLayout htmlFor="name">First name</LabelFormLayout>
+					<InputFormLayout
+						{...register("firstName")}
+						id="name"
+						placeholder="Name"
+					/>
 					<S.InputError text={errors.firstName?.message || ""} />
 				</S.RowContainer>
 				<S.RowContainer>
-					<S.Label htmlFor="surname">Last name</S.Label>
-					<S.Input
+					<LabelFormLayout htmlFor="surname">Last name</LabelFormLayout>
+					<InputFormLayout
 						{...register("surname")}
 						id="surname"
 						placeholder="Last name"
@@ -60,8 +67,8 @@ function RegisterForm() {
 				</S.RowContainer>
 			</S.PeronalInfoContainer>
 			<S.InputContainer>
-				<S.Label htmlFor="email">Email</S.Label>
-				<S.Input
+				<LabelFormLayout htmlFor="email">Email</LabelFormLayout>
+				<InputFormLayout
 					{...register("email")}
 					id="email"
 					placeholder="name@example.com"
@@ -69,8 +76,8 @@ function RegisterForm() {
 				<S.InputError text={errors.email?.message || ""} />
 			</S.InputContainer>
 			<S.InputContainer>
-				<S.Label htmlFor="password">Password</S.Label>
-				<S.Input
+				<LabelFormLayout htmlFor="password">Password</LabelFormLayout>
+				<InputFormLayout
 					{...register("password")}
 					id="password"
 					placeholder="••••••••"
@@ -78,8 +85,10 @@ function RegisterForm() {
 				<S.InputError text={errors.password?.message || ""} />
 			</S.InputContainer>
 			<S.InputContainer>
-				<S.Label htmlFor="confirm-password">Confirm password</S.Label>
-				<S.Input
+				<LabelFormLayout htmlFor="confirm-password">
+					Confirm password
+				</LabelFormLayout>
+				<InputFormLayout
 					{...register("confirmPassword")}
 					id="confirm-password"
 					placeholder="••••••••"
@@ -87,7 +96,7 @@ function RegisterForm() {
 				<S.InputError text={errors.confirmPassword?.message || ""} />
 			</S.InputContainer>
 			<S.SubmitButton type="submit" text="Create account" />
-		</S.Form>
+		</FormLayout>
 	);
 }
 

@@ -1,16 +1,7 @@
 import styled from "styled-components";
 import CustomError from "../../common/CustomError";
 import HeaderButton from "../../common/HeaderButton";
-import {
-	FormLayout,
-	InputContainerLayout,
-	InputLayout,
-	LabelLayout,
-} from "../../../styles/mixin";
-
-export const Form = styled.form`
-	${FormLayout}
-`;
+import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
 
 export const PeronalInfoContainer = styled.div`
 	display: flex;
@@ -19,22 +10,13 @@ export const PeronalInfoContainer = styled.div`
 	gap: 1rem;
 `;
 
-export const InputContainer = styled.div`
-	${InputContainerLayout}
+export const InputContainer = styled(InputContainerFormLayout)`
 	margin-bottom: ${({ theme }) => theme.margin.m3};
 `;
 
 export const RowContainer = styled(InputContainer)`
 	position: relative;
 	display: flex;
-`;
-
-export const Label = styled.label`
-	${LabelLayout}
-`;
-
-export const Input = styled.input`
-	${InputLayout}
 `;
 
 export const InputError = styled(CustomError)`

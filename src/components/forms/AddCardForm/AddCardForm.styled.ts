@@ -1,28 +1,10 @@
 import styled from "styled-components";
-import {
-	FormLayout,
-	InputContainerLayout,
-	InputLayout,
-	LabelLayout,
-} from "../../../styles/mixin";
 import HeaderButton from "../../common/HeaderButton";
 import CustomError from "../../common/CustomError";
+import FormLayout from "../../Layout/FormLayout";
 
-export const Form = styled.form`
-	${FormLayout}
+export const Form = styled(FormLayout)`
 	max-width: 40rem;
-`;
-
-export const InputContainer = styled.div`
-	${InputContainerLayout}
-`;
-
-export const Label = styled.label`
-	${LabelLayout}
-`;
-
-export const Input = styled.input`
-	${InputLayout}
 `;
 
 export const InputError = styled(CustomError)`

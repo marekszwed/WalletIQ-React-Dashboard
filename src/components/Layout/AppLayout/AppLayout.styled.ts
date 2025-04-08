@@ -9,5 +9,5 @@ export const Wrapper = styled.div`
 export const Main = styled.main<{ $show: boolean }>`
 	flex: 1;
 	padding-top: ${({ theme }) => theme.padding.p7};
-	padding-left: ${({ $show }) => ($show ? "0" : "theme.padding.p7")};
+	padding-left: ${({ $show, theme }) => ($show ? 0 : `${theme.padding.p7}`)};
 `;
