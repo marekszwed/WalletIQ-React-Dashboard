@@ -1,18 +1,13 @@
 import { ReactNode } from "react";
 import * as S from "./InputContainerFormLayout.styled";
 
-interface InputContainerProps {
+type InputContainerProps = {
 	className?: string;
 	children: ReactNode;
-}
+};
 
-function InputContainerFormLayout({
-	className,
-	children,
-}: InputContainerProps) {
-	const containerProps = { className, children };
-
-	return <S.Container {...containerProps} />;
+function InputContainerFormLayout(props: InputContainerProps) {
+	return <S.Container {...props} />;
 }
 
 export default InputContainerFormLayout;
