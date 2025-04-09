@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import CustomError from "../../common/CustomError";
 import HeaderButton from "../../common/HeaderButton";
-import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
+import CustomError from "../../common/CustomError";
+import FormLayout from "../../Layout/FormLayout";
 
-export const InputContainer = styled(InputContainerFormLayout)`
-	margin-bottom: ${({ theme }) => theme.margin.m4};
+export const Form = styled(FormLayout)`
+	max-width: 40rem;
 `;
 
 export const InputError = styled(CustomError)`

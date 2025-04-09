@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginUser } from "../formSlice";
 import { loginSchema } from "./loginSchema";
 import { useNavigate } from "react-router-dom";
+import LabelFormLayout from "../../Layout/LabelFormLayout";
+import InputFormLayout from "../../Layout/InputFormLayout";
+import FormLayout from "../../Layout/FormLayout";
 
 interface LoginFormTypes {
 	email: string;
@@ -39,10 +42,10 @@ function LoginForm() {
 	}
 
 	return (
-		<S.Form onSubmit={handleSubmit(onSubmit)}>
+		<FormLayout onSubmit={handleSubmit(onSubmit)}>
 			<S.InputContainer>
-				<S.Label htmlFor="email">Email</S.Label>
-				<S.Input
+				<LabelFormLayout htmlFor="email">Email</LabelFormLayout>
+				<InputFormLayout
 					{...register("email")}
 					id="email"
 					placeholder="name@example.com"
@@ -50,8 +53,8 @@ function LoginForm() {
 				<S.InputError text={errors.email?.message || ""} />
 			</S.InputContainer>
 			<S.InputContainer>
-				<S.Label htmlFor="password">Password</S.Label>
-				<S.Input
+				<LabelFormLayout htmlFor="password">Password</LabelFormLayout>
+				<InputFormLayout
 					{...register("password")}
 					id="password"
 					placeholder="••••••••"
@@ -59,7 +62,7 @@ function LoginForm() {
 				<S.InputError text={errors.password?.message || ""} />
 			</S.InputContainer>
 			<S.SubmitButton type="submit" text="Sign in" />
-		</S.Form>
+		</FormLayout>
 	);
 }
 export default LoginForm;

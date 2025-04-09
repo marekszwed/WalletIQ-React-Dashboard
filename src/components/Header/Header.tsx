@@ -6,17 +6,18 @@ import HeaderButton from "../common/HeaderButton";
 
 function Header() {
 	const location = useLocation();
+	const Paths = [Routes.home, Routes.login];
+	const isNotAllowedPath = Paths.includes(location.pathname);
 	const isLoginPage = location.pathname === Routes.login;
-	const isDashboard = location.pathname === Routes.dashboard;
 
 	return (
-		<S.HeaderStyled $show={isDashboard}>
+		<S.HeaderStyled $show={!isNotAllowedPath} $isDarker={isNotAllowedPath}>
 			<Logo />
 			{!isLoginPage && (
 				<S.ButtonsContainer>
 					<HeaderButton
-						href={isDashboard ? "/" : "/login"}
-						text={!isDashboard ? "Zaloguj się" : "Wyloguj się"}
+						href={!isNotAllowedPath ? "/" : "/login"}
+						text={isNotAllowedPath ? "Zaloguj się" : "Wyloguj się"}
 					/>
 				</S.ButtonsContainer>
 			)}

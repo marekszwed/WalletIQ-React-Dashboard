@@ -2,19 +2,20 @@ import { NavLink } from "react-router";
 import styled from "styled-components";
 
 export const Menu = styled.aside<{ $open: boolean }>`
-	position: relative;
+	position: fixed;
+	top: 7rem;
+	left: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	flex-grow: ${({ $open }) => ($open ? ".06" : "0")};
+	background-color: ${({ theme }) => theme.primaryColors.white};
 	border-right: ${({ theme }) => theme.border.b_1} solid
 		${({ theme }) => theme.primaryColors.white300};
-	height: 100vh;
-	width: 3.7vw;
+	height: 100%;
+	width: ${({ $open }) => ($open ? "17rem" : "7rem")};
 	text-align: left;
-	top: 0;
-	left: 0;
 	transition: 0.2s ease-in-out;
+	z-index: ${({ theme }) => theme.zindex.header};
 	overflow: hidden;
 `;
 
@@ -41,6 +42,10 @@ export const Li = styled.li`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	&:hover {
+		color: ${({ theme }) => theme.primaryColors.hover.blue};
+	}
 `;
 
 export const StyledNavlink = styled(NavLink)`

@@ -1,14 +1,7 @@
 import styled from "styled-components";
 import CustomError from "../../common/CustomError";
 import HeaderButton from "../../common/HeaderButton";
-
-export const Form = styled.form`
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	margin-top: ${({ theme }) => theme.margin.m3};
-`;
+import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
 
 export const PeronalInfoContainer = styled.div`
 	display: flex;
@@ -17,29 +10,13 @@ export const PeronalInfoContainer = styled.div`
 	gap: 1rem;
 `;
 
-export const InputContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+export const InputContainer = styled(InputContainerFormLayout)`
 	margin-bottom: ${({ theme }) => theme.margin.m3};
 `;
 
 export const RowContainer = styled(InputContainer)`
 	position: relative;
 	display: flex;
-`;
-
-export const Label = styled.label`
-	font-size: ${({ theme }) => theme.fontSize.f_normal};
-	padding-left: ${({ theme }) => theme.padding.p1};
-	padding-bottom: ${({ theme }) => theme.padding.p1};
-`;
-
-export const Input = styled.input`
-	padding: ${({ theme }) => `${theme.padding.p1} ${theme.padding.p1}`};
-	font-size: ${({ theme }) => theme.fontSize.f_normal};
-	border-radius: ${({ theme }) => theme.border.b1};
-	border: none;
 `;
 
 export const InputError = styled(CustomError)`

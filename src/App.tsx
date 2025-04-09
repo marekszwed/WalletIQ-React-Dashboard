@@ -1,13 +1,14 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
-import { Header } from "./components";
 import RoutesPaths from "./routes/routes";
+import AppLayout from "./components/Layout/AppLayout";
 
 function App() {
 	return (
 		<ThemeProvider theme={theme}>
-			<Header />
-			<RoutesPaths />
+			<AppLayout>
+				<RoutesPaths />
+			</AppLayout>
 		</ThemeProvider>
 	);
 }
