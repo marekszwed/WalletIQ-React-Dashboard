@@ -5,9 +5,9 @@ import Header from "../../Header";
 import { Routes } from "../../../constants/constants";
 import { useLocation } from "react-router";
 
-interface LayoutProps {
+type LayoutProps = {
 	children: ReactNode;
-}
+};
 
 function AppLayout({ children }: LayoutProps) {
 	const location = useLocation();
