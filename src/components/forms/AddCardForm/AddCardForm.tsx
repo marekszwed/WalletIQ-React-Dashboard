@@ -5,6 +5,9 @@ import { AddCardSchema } from "./AddCardFormSchema";
 import { useDispatch } from "react-redux";
 import { cardData } from "../cardFormSlice";
 import { useNavigate } from "react-router-dom";
+import LabelFormLayout from "../../Layout/LabelFormLayout";
+import InputFormLayout from "../../Layout/InputFormLayout";
+import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
 
 interface AddCardFormTypes {
 	creditCardNumber: string;
@@ -47,9 +50,11 @@ function AddCardForm() {
 
 	return (
 		<S.Form onSubmit={handleSubmit(onSubmit)}>
-			<S.InputContainer>
-				<S.Label htmlFor="card-number">Number of your credit card</S.Label>
-				<S.Input
+			<InputContainerFormLayout>
+				<LabelFormLayout htmlFor="card-number">
+					Number of your credit card
+				</LabelFormLayout>
+				<InputFormLayout
 					{...register("creditCardNumber")}
 					id="card-number"
 					placeholder="**** **** **** ****"
@@ -57,27 +62,29 @@ function AddCardForm() {
 					onChange={handleCardNumberFormatChange}
 				/>
 				<S.InputError text={errors.creditCardNumber?.message || ""} />
-			</S.InputContainer>
-			<S.InputContainer>
-				<S.Label htmlFor="cvc-number">CVC number</S.Label>
-				<S.Input
+			</InputContainerFormLayout>
+			<InputContainerFormLayout>
+				<LabelFormLayout htmlFor="cvc-number">CVC number</LabelFormLayout>
+				<InputFormLayout
 					{...register("cvcNumber")}
 					id="cvc-number"
 					placeholder="***"
 					maxLength={3}
 				/>
 				<S.InputError text={errors.cvcNumber?.message || ""} />
-			</S.InputContainer>
-			<S.InputContainer>
-				<S.Label htmlFor="expiration-date">Expiration date</S.Label>
-				<S.Input
+			</InputContainerFormLayout>
+			<InputContainerFormLayout>
+				<LabelFormLayout htmlFor="expiration-date">
+					Expiration date
+				</LabelFormLayout>
+				<InputFormLayout
 					{...register("expirationDate")}
 					id="expiration-date"
 					placeholder="**/**"
 					maxLength={4}
 				/>
 				<S.InputError text={errors.expirationDate?.message || ""} />
-			</S.InputContainer>
+			</InputContainerFormLayout>
 			<S.SubmitButton type="submit" text="Save" />
 		</S.Form>
 	);
