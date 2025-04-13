@@ -1,10 +1,24 @@
 {
 	"Global": {
 		"login": "Login",
-		"logout": "Logout"
+		"logout": "Logout",
+		"password": "password",
+		"confirmPassword": "Confirm password",
+		"save": "save"
 	},
 	"LoginForm": {
 		"welcome": "Welcome",
-		"info": "Sign in to your account or create a new one"
+		"info": "Sign in to your account or create a new one",
+		"signIn": "Sign in"
+	},
+	"RegisterForm": {
+		"name": "name",
+		"surname": "surname"
+	},
+	"AddCardForm": {
+		"nameYourCard": "Name your card",
+		"numberOfYourCreditCard": "Number of your credit card",
+		"cvcNumber": "CVC number",
+		"expirationDate": "Expiration date"
 	}
 }

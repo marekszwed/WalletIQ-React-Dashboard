@@ -4,7 +4,7 @@ import { PageStyled } from "../../styles/mixin";
 export const Cards = styled.div`
 	${PageStyled}
 	background-color: ${({ theme }) => theme.primaryColors.white100};
-	height: 100vh;
+	height: 100%;
 	justify-content: center;
 	align-items: center;
 `;

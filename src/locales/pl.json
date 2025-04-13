@@ -1,10 +1,24 @@
 {
 	"Global": {
-		"login": "Login",
-		"logout": "Wyloguj się"
+		"login": "Zaloguj się",
+		"logout": "Wyloguj się",
+		"password": "Hasło",
+		"confirmPassword": "Potwierdź hasło",
+		"save": "Zapisz"
 	},
 	"LoginForm": {
 		"welcome": "Witaj",
-		"info": "Zaloguj się na swoje konto lub utwórz nowe"
+		"info": "Zaloguj się na swoje konto lub utwórz nowe",
+		"signIn": "Zaloguj się"
+	},
+	"RegisterForm": {
+		"name": "Imię",
+		"surname": "Nazwisko"
+	},
+	"AddCardForm": {
+		"nameYourCard": "Nazwij swoją kartę",
+		"numberOfYourCreditCard": "Numer Twojej karty kredytowej",
+		"cvcNumber": "Numer CVC",
+		"expirationDate": "Data wygaśnięcia"
 	}
 }
