@@ -2,7 +2,6 @@ import * as S from "./Header.styled";
 import { useLocation } from "react-router-dom";
 import { Routes } from "../../constants/constants";
 import Logo from "../Logo";
-import HeaderButton from "../common/HeaderButton";
 
 function Header() {
 	const location = useLocation();
@@ -15,7 +14,7 @@ function Header() {
 			<Logo />
 			{!isLoginPage && (
 				<S.ButtonsContainer>
-					<HeaderButton
+					<S.HeaderButton
 						href={!isNotAllowedPath ? "/" : "/login"}
 						text={isNotAllowedPath ? "Zaloguj się" : "Wyloguj się"}
 					/>

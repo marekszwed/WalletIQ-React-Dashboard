@@ -1,6 +1,8 @@
+export { default as Modal } from "./common/Modal";
+export { default as Toast } from "./Toast";
 export { default as Layout } from "./Layout/AppLayout/AppLayout";
 export { default as Header } from "./Header";
-export { default as HeaderButton } from "./common/HeaderButton";
+export { default as Button } from "./common/Button";
 export { default as Logo } from "./Logo";
 export { default as CardHeading } from "./forms/CardHeading";
 export { default as FormLayout } from "./Layout/FormLayout";
@@ -14,4 +16,5 @@ export { default as SideBar } from "./SideBar";
 export { default as AddCardForm } from "./forms/AddCardForm";
 export { default as CardsList } from "./listOfCards/CardsList";
 export { default as SingleCard } from "./listOfCards/SingleCard";
-export { default as RemoveWarningPortal } from "./listOfCards/RemoveWarningPortal";
+export { default as ConfirmationModal } from "./listOfCards/ConfirmationModal";
+export { default as ModalIcon } from "./listOfCards/ModalIcon";

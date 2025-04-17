@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HeaderButton from "../../common/HeaderButton";
+import Button from "../../common/Button";
 
 export const CardsListContainer = styled.div`
 	position: relative;
@@ -18,7 +18,11 @@ export const SubMenu = styled.div`
 	align-items: center;
 `;
 
-export const SubMenuButton = styled(HeaderButton)`
+export const AddCardButton = styled(Button)`
+	margin-right: ${({ theme }) => theme.margin.m5};
+`;
+
+export const SubMenuButton = styled(Button)`
 	margin-right: 0;
 `;
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HeaderButton from "../../common/HeaderButton";
+import Button from "../../common/Button";
 
 export const CardHeader = styled.div`
 	position: relative;
@@ -34,7 +34,7 @@ export const CardButtonContainer = styled.div`
 	border-radius: ${({ theme }) => theme.border.b1};
 `;
 
-export const CardButton = styled(HeaderButton)`
+export const CardButton = styled(Button)`
 	max-width: 16rem;
 	width: 100%;
 	margin: ${({ theme }) => theme.margin.m_5};

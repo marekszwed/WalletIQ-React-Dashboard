@@ -3,12 +3,19 @@ import * as S from "./LabelFormLayout.styled";
 
 type LabelFormLayoutProps = {
 	children: ReactNode;
-	htmlFor: string;
 	className?: string;
-};
+} & React.ComponentProps<"label">;
 
-function LabelFormLayout(props: LabelFormLayoutProps) {
-	return <S.Label {...props}></S.Label>;
+function LabelFormLayout({
+	children,
+	className,
+	...props
+}: LabelFormLayoutProps) {
+	return (
+		<S.Label {...props} className={className}>
+			{children}
+		</S.Label>
+	);
 }
 
 export default LabelFormLayout;

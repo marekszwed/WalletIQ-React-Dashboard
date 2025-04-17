@@ -10,8 +10,6 @@ export const Li = styled.li`
 	font-size: ${({ theme }) => theme.fontSize.f2};
 	background-color: ${({ theme }) => theme.primaryColors.white};
 	border-radius: ${({ theme }) => theme.border.b1};
-	-webkit-box-shadow: 8px 8px 32px 1px rgba(219, 226, 239, 1);
-	-moz-box-shadow: 8px 8px 32px 1px rgba(219, 226, 239, 1);
 	box-shadow: 8px 8px 32px 1px rgba(219, 226, 239, 1);
 	overflow: hidden;
 `;

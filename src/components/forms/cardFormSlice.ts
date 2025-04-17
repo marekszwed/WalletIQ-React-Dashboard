@@ -8,31 +8,32 @@ interface AddCardFormTypes {
 	expirationDate: string;
 }
 
-const initialState: AddCardFormTypes[] = JSON.parse(
-	localStorage.getItem("cards") || "[]"
-);
+interface CardState {
+	cards: AddCardFormTypes[];
+}
+
+const initialState: CardState = {
+	cards: JSON.parse(localStorage.getItem("cards") || "[]"),
+};
 
 const cardFormSlice = createSlice({
 	name: "card",
 	initialState,
 	reducers: {
 		cardData: (state, action: PayloadAction<AddCardFormTypes>) => {
-			const newCard = action.payload;
-			state.push(newCard);
-			localStorage.setItem("cards", JSON.stringify(state));
+			state.cards.push(action.payload);
+			localStorage.setItem("cards", JSON.stringify(state.cards));
 		},
 		deleteSingleItem: (
 			state,
 			action: PayloadAction<Pick<AddCardFormTypes, "id">>
 		) => {
-			const updatedState = state.filter(
-				(card) => card.id !== action.payload.id
-			);
-			localStorage.setItem("cards", JSON.stringify(updatedState));
-			return updatedState;
+			state.cards = state.cards.filter((card) => card.id !== action.payload.id);
+			localStorage.setItem("cards", JSON.stringify(state.cards));
 		},
-		clearData: () => {
-			return [];
+		clearData: (state) => {
+			state.cards = [];
+			localStorage.removeItem("cards");
 		},
 	},
 });
