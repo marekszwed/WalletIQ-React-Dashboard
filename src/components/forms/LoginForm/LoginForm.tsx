@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LabelFormLayout from "../../Layout/LabelFormLayout";
 import InputFormLayout from "../../Layout/InputFormLayout";
 import FormLayout from "../../Layout/FormLayout";
+import Toast from "../../Toast";
 
 interface LoginFormTypes {
 	email: string;
@@ -31,13 +32,13 @@ function LoginForm() {
 			const result = await dispatch(loginUser(data));
 
 			if (result.type === "auth/loginUser") {
-				console.log("Data submitted correctly", data);
 				navigate("/dashboard");
+				Toast.success("You have logged in successfully");
 			} else {
-				console.log("Data transmitted incorrectly", data);
+				Toast.warning("Data transmitted incorrectly");
 			}
 		} catch (error) {
-			console.error("An error occurred while logging in:", error);
+			Toast.error(`An error occurred while logging in: ${error}`);
 		}
 	}
 

@@ -37,8 +37,15 @@ function RemoveWarningPortal({ isOpen, onClose }: WarningPortalProps) {
 					</S.Announcment>
 				</S.AnnouncmentBox>
 				<S.ButtonContainer>
-					<S.CancelButton onClick={handleClosePortal} text="Cancel" />
-					<S.WarningButton onClick={removeAllReduxDataAndLS}>
+					<S.CancelButton
+						onClick={handleClosePortal}
+						text="Cancel"
+						aria-label="Cancel deletion and close the dialog"
+					/>
+					<S.WarningButton
+						onClick={removeAllReduxDataAndLS}
+						aria-label="Confirm deletion of all cards"
+					>
 						Delete
 					</S.WarningButton>
 				</S.ButtonContainer>

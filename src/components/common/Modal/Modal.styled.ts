@@ -1,13 +1,21 @@
 import styled from "styled-components";
-import { Overlay } from "../../../styles/mixin";
-import { TriangleAlert } from "lucide-react";
-import Button from "../../common/Button";
+import Button from "../Button";
 
-export const WarningOverlay = styled.div`
-	${Overlay}
+export const ModalOverlay = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: ${({ theme }) => theme.zindex.overlay};
 `;
 
-export const Container = styled.div`
+export const ModalContainer = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -19,26 +27,6 @@ export const Container = styled.div`
 	border: ${({ theme }) => theme.border.b_1} solid
 		${({ theme }) => theme.primaryColors.palette.blue800};
 	overflow: hidden;
-`;
-
-export const IconContainer = styled.div`
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: ${({ theme }) => theme.margin.m4};
-	width: 6rem;
-	height: 6rem;
-	background-color: ${({ theme }) => theme.primaryColors.error};
-	border-radius: 5rem;
-`;
-
-export const Icon = styled(TriangleAlert)`
-	display: flex;
-	width: 4rem;
-	height: 4rem;
-	margin-bottom: ${({ theme }) => theme.margin.m_6};
-	color: ${({ theme }) => theme.primaryColors.white};
 `;
 
 export const AnnouncmentBox = styled.div`
@@ -54,7 +42,7 @@ export const Title = styled.p`
 	margin-bottom: 0;
 `;
 
-export const Announcment = styled.p`
+export const Description = styled.p`
 	font-size: ${({ theme }) => theme.fontSize.f_normal};
 	font-weight: ${({ theme }) => theme.fontWeight.f200};
 	color: ${({ theme }) => theme.primaryColors.white};

@@ -1,4 +1,3 @@
-import HeaderButton from "../../common/HeaderButton";
 import * as S from "./CardsList.styled";
 import SingleCard from "../SingleCard";
 import { RootState } from "../../../Store/store";
@@ -7,11 +6,11 @@ import { deleteSingleItem } from "../../forms/cardFormSlice";
 
 type CardListProps = {
 	onAddCardClick: () => void;
-	onShowWarning: () => void;
+	onShowModal: () => void;
 };
 
-function CardsList({ onAddCardClick, onShowWarning }: CardListProps) {
-	const cards = useSelector((state: RootState) => state.card);
+function CardsList({ onAddCardClick, onShowModal }: CardListProps) {
+	const cards = useSelector((state: RootState) => state.card.cards);
 	const dispatch = useDispatch();
 
 	const handleRemoveSingleItem = (id: string) => {
@@ -23,8 +22,8 @@ function CardsList({ onAddCardClick, onShowWarning }: CardListProps) {
 			<S.SubMenu>
 				<S.SubpageTitle>Manage Your cards</S.SubpageTitle>
 				<S.ManageButtonsBox>
-					<HeaderButton text="Add card" onClick={onAddCardClick} />
-					<S.SubMenuButton text="Remove all" onClick={onShowWarning} />
+					<S.AddCardButton text="Add card" onClick={onAddCardClick} />
+					<S.SubMenuButton text="Remove all" onClick={onShowModal} />
 				</S.ManageButtonsBox>
 			</S.SubMenu>
 			<S.Ul>

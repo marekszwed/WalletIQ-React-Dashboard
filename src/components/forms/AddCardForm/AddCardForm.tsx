@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import InputFormLayout from "../../Layout/InputFormLayout";
 import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
 import ReactDOM from "react-dom";
+import Toast from "../../Toast";
+import { useRef } from "react";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 interface AddCardFormTypes {
 	cardName: string;
@@ -24,6 +27,10 @@ type AddCardFormProps = {
 function AddCardForm({ isOpen, onClose }: AddCardFormProps) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const modalRef = useRef<HTMLFormElement>(null);
+
+	useClickOutside({ ref: modalRef, onClickOutside: onClose });
+
 	const {
 		register,
 		handleSubmit,
@@ -50,26 +57,23 @@ function AddCardForm({ isOpen, onClose }: AddCardFormProps) {
 			const result = await dispatch(cardData(newCard));
 
 			if (result.type === "card/cardData") {
+				Toast.success("Data saved successfully");
 				navigate("/cards");
 				onClose();
 				reset();
-				console.log(typeof result);
 			} else {
-				console.log("Data transmitted incorrectly", newCard);
+				Toast.warning("Data transmitted incorrectly");
 			}
 		} catch (error) {
-			console.error("An error occurred while logging in:", error);
+			Toast.error(`An error occurred while logging in: ${error}`);
 		}
 	}
 
 	if (!isOpen) return null;
 
 	return ReactDOM.createPortal(
-		<S.FormOverlay onClick={onClose}>
-			<S.Form
-				onSubmit={handleSubmit(onSubmit)}
-				onClick={(e) => e.stopPropagation()}
-			>
+		<S.FormOverlay>
+			<S.Form ref={modalRef} onSubmit={handleSubmit(onSubmit)}>
 				<InputContainerFormLayout>
 					<S.Label htmlFor="card-name">Name your card</S.Label>
 					<InputFormLayout
