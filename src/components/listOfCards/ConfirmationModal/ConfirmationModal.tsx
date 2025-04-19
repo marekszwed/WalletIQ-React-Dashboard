@@ -1,17 +1,25 @@
 import Modal from "../../common/Modal";
 import ModalIcon from "../ModalIcon";
 
-type ConfrimationModal = {
+type ConfirmationModal = {
+	title: string;
+	description: string;
 	onOpen: () => void;
 	onCancel?: () => void;
 	onConfirm?: () => void;
 };
 
-function ConfrimationModal({ onOpen, onCancel, onConfirm }: ConfrimationModal) {
+function ConfirmationModal({
+	title,
+	description,
+	onOpen,
+	onCancel,
+	onConfirm,
+}: ConfirmationModal) {
 	return (
 		<Modal
-			title="Delete All"
-			description="This will permamently delete all card from your account"
+			title={title}
+			description={description}
 			children={<ModalIcon />}
 			onOpen={onOpen}
 			onCancel={onCancel}
@@ -20,4 +28,4 @@ function ConfrimationModal({ onOpen, onCancel, onConfirm }: ConfrimationModal) {
 	);
 }
 
-export default ConfrimationModal;
+export default ConfirmationModal;

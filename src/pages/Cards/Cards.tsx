@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { AddCardForm, CardsList, ConfirmationModal } from "../../components";
 import * as S from "./Cards.styled";
 import { useDispatch } from "react-redux";
@@ -28,8 +27,10 @@ function Cards() {
 			/>
 			{addConfirmModalState.isOpen && (
 				<ConfirmationModal
+					title="Delete All"
+					description="This will permamently delete all card from your account"
 					onOpen={addConfirmModalState.toggleOpen}
-					onCancel={() => addConfirmModalState.setIsOpen(false)}
+					onCancel={() => addConfirmModalState.setIsOpen(true)}
 					onConfirm={removeAllReduxDataAndLS}
 				/>
 			)}
