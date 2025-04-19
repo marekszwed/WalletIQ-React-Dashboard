@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import * as S from "./HeaderButton.styled";
+import * as S from "./Button.styled";
 
 interface Props {
 	type?: "submit" | "button";

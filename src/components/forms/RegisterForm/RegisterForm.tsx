@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LabelFormLayout from "../../Layout/LabelFormLayout";
 import InputFormLayout from "../../Layout/InputFormLayout";
 import FormLayout from "../../Layout/FormLayout";
+import Toast from "../../Toast";
 
 interface RegisterFormTypes {
 	firstName: string;
@@ -34,13 +35,13 @@ function RegisterForm() {
 			const result = await dispatch(registerUser(data));
 
 			if (result.type === "auth/registerUser") {
-				console.log("Data submitted correctly", data);
 				navigate("/dashboard");
+				Toast.success("Registered successfully");
 			} else {
-				console.log("Data transmitted incorrectly", data);
+				Toast.warning("Data transmitted incorrectly");
 			}
 		} catch (error) {
-			console.error("An error occurred while logging in:", error);
+			Toast.error(`An error occurred while logging in: ${error}`);
 		}
 	}
 

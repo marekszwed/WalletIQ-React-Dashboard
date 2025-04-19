@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import CustomError from "../../common/CustomError";
-import HeaderButton from "../../common/HeaderButton";
+import Button from "../../common/Button";
 import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
 
 export const InputContainer = styled(InputContainerFormLayout)`
@@ -11,6 +11,6 @@ export const InputError = styled(CustomError)`
 	padding-left: ${({ theme }) => theme.padding.p1};
 `;
 
-export const SubmitButton = styled(HeaderButton)`
+export const SubmitButton = styled(Button)`
 	width: 100%;
 `;

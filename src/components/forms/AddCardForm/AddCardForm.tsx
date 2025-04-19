@@ -5,23 +5,37 @@ import { AddCardSchema } from "./AddCardFormSchema";
 import { useDispatch } from "react-redux";
 import { cardData } from "../cardFormSlice";
 import { useNavigate } from "react-router-dom";
-import LabelFormLayout from "../../Layout/LabelFormLayout";
 import InputFormLayout from "../../Layout/InputFormLayout";
 import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
+import ReactDOM from "react-dom";
+import Toast from "../../Toast";
+import { useRef } from "react";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 interface AddCardFormTypes {
+	cardName: string;
 	creditCardNumber: string;
 	cvcNumber: string;
 	expirationDate: string;
 }
 
-function AddCardForm() {
+type AddCardFormProps = {
+	isOpen: boolean;
+	onClose: () => void;
+};
+
+function AddCardForm({ isOpen, onClose }: AddCardFormProps) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const modalRef = useRef<HTMLFormElement>(null);
+
+	useClickOutside({ ref: modalRef, onClickOutside: onClose });
+
 	const {
 		register,
 		handleSubmit,
 		setValue,
+		reset,
 		formState: { errors },
 	} = useForm<AddCardFormTypes>({ resolver: yupResolver(AddCardSchema) });
 
@@ -34,59 +48,76 @@ function AddCardForm() {
 		setValue("creditCardNumber", formatValue);
 	}
 
-	async function onSubmit(data: AddCardFormTypes) {
+	async function onSubmit(data: Omit<AddCardFormTypes, "id">) {
 		try {
-			const result = await dispatch(cardData(data));
+			const newCard = {
+				...data,
+				id: crypto.randomUUID(),
+			};
+			const result = await dispatch(cardData(newCard));
 
 			if (result.type === "card/cardData") {
+				Toast.success("Data saved successfully");
 				navigate("/cards");
+				onClose();
+				reset();
 			} else {
-				console.log("Data transmitted incorrectly", data);
+				Toast.warning("Data transmitted incorrectly");
 			}
 		} catch (error) {
-			console.error("An error occurred while logging in:", error);
+			Toast.error(`An error occurred while logging in: ${error}`);
 		}
 	}
 
-	return (
-		<S.Form onSubmit={handleSubmit(onSubmit)}>
-			<InputContainerFormLayout>
-				<LabelFormLayout htmlFor="card-number">
-					Number of your credit card
-				</LabelFormLayout>
-				<InputFormLayout
-					{...register("creditCardNumber")}
-					id="card-number"
-					placeholder="**** **** **** ****"
-					maxLength={19}
-					onChange={handleCardNumberFormatChange}
-				/>
-				<S.InputError text={errors.creditCardNumber?.message || ""} />
-			</InputContainerFormLayout>
-			<InputContainerFormLayout>
-				<LabelFormLayout htmlFor="cvc-number">CVC number</LabelFormLayout>
-				<InputFormLayout
-					{...register("cvcNumber")}
-					id="cvc-number"
-					placeholder="***"
-					maxLength={3}
-				/>
-				<S.InputError text={errors.cvcNumber?.message || ""} />
-			</InputContainerFormLayout>
-			<InputContainerFormLayout>
-				<LabelFormLayout htmlFor="expiration-date">
-					Expiration date
-				</LabelFormLayout>
-				<InputFormLayout
-					{...register("expirationDate")}
-					id="expiration-date"
-					placeholder="**/**"
-					maxLength={4}
-				/>
-				<S.InputError text={errors.expirationDate?.message || ""} />
-			</InputContainerFormLayout>
-			<S.SubmitButton type="submit" text="Save" />
-		</S.Form>
+	if (!isOpen) return null;
+
+	return ReactDOM.createPortal(
+		<S.FormOverlay>
+			<S.Form ref={modalRef} onSubmit={handleSubmit(onSubmit)}>
+				<InputContainerFormLayout>
+					<S.Label htmlFor="card-name">Name your card</S.Label>
+					<InputFormLayout
+						{...register("cardName")}
+						id="card-name"
+						placeholder="Ex. first card"
+					/>
+					<S.InputError text={errors.cardName?.message || ""} />
+				</InputContainerFormLayout>
+				<InputContainerFormLayout>
+					<S.Label htmlFor="card-number">Number of your credit card</S.Label>
+					<InputFormLayout
+						{...register("creditCardNumber")}
+						id="card-number"
+						placeholder="**** **** **** ****"
+						maxLength={19}
+						onChange={handleCardNumberFormatChange}
+					/>
+					<S.InputError text={errors.creditCardNumber?.message || ""} />
+				</InputContainerFormLayout>
+				<InputContainerFormLayout>
+					<S.Label htmlFor="cvc-number">CVC number</S.Label>
+					<InputFormLayout
+						{...register("cvcNumber")}
+						id="cvc-number"
+						placeholder="***"
+						maxLength={3}
+					/>
+					<S.InputError text={errors.cvcNumber?.message || ""} />
+				</InputContainerFormLayout>
+				<InputContainerFormLayout>
+					<S.Label htmlFor="expiration-date">Expiration date</S.Label>
+					<InputFormLayout
+						{...register("expirationDate")}
+						id="expiration-date"
+						placeholder="**/**"
+						maxLength={4}
+					/>
+					<S.InputError text={errors.expirationDate?.message || ""} />
+				</InputContainerFormLayout>
+				<S.SubmitButton type="submit" text="Save" />
+			</S.Form>
+		</S.FormOverlay>,
+		document.getElementById("cardForm") as HTMLElement
 	);
 }
 

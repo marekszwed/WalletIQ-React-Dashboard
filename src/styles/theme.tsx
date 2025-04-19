@@ -23,14 +23,24 @@ export const theme = {
 	fontSize: {
 		f1_4: "1.4rem",
 		f_normal: "1.6rem",
+		f2: "2rem",
 		f_h2: "3rem",
 		f4_2: "4.2rem",
+	},
+	fontWeight: {
+		f100: "100",
+		f200: "200",
+		f300: "300",
+		f400: "400",
+		f500: "500",
+		f700: "700",
 	},
 	border: {
 		b_1: ".1rem",
 		b1: "1rem",
 	},
 	padding: {
+		p_5: ".5rem",
 		p_8: ".8rem",
 		p1: "1rem",
 		p2: "2rem",
@@ -43,10 +53,11 @@ export const theme = {
 		p7: "7rem",
 		p8: "8rem",
 		p9: "9rem",
-		p10: "10rem",
+		p10: "20rem",
 	},
 	margin: {
 		m_5: ".5rem",
+		m_6: ".6rem",
 		m1: "1rem",
 		m2: "2rem",
 		m3: "3rem",
@@ -55,8 +66,10 @@ export const theme = {
 		m6: "6rem",
 		m7: "7rem",
 		m8: "8rem",
+		m9: "9rem",
 	},
 	zindex: {
 		header: "6",
+		overlay: "7",
 	},
 } as const;

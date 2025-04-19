@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
 export const AddCardSchema = yup.object({
+	cardName: yup.string().required("Enter the name of the card"),
 	creditCardNumber: yup
 		.string()
 		.min(16)

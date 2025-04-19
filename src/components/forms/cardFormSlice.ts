@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AddCardFormTypes {
+	id: string;
+	cardName: string;
 	creditCardNumber: string;
 	cvcNumber: string;
 	expirationDate: string;
 }
 
-const initialState: AddCardFormTypes = {
-	creditCardNumber: "",
-	cvcNumber: "",
-	expirationDate: "",
+interface CardState {
+	cards: AddCardFormTypes[];
+}
+
+const initialState: CardState = {
+	cards: JSON.parse(localStorage.getItem("cards") || "[]"),
 };
 
 const cardFormSlice = createSlice({
@@ -17,12 +21,22 @@ const cardFormSlice = createSlice({
 	initialState,
 	reducers: {
 		cardData: (state, action: PayloadAction<AddCardFormTypes>) => {
-			state.creditCardNumber = action.payload.creditCardNumber;
-			state.cvcNumber = action.payload.cvcNumber;
-			state.expirationDate = action.payload.expirationDate;
+			state.cards.push(action.payload);
+			localStorage.setItem("cards", JSON.stringify(state.cards));
+		},
+		deleteSingleItem: (
+			state,
+			action: PayloadAction<Pick<AddCardFormTypes, "id">>
+		) => {
+			state.cards = state.cards.filter((card) => card.id !== action.payload.id);
+			localStorage.setItem("cards", JSON.stringify(state.cards));
+		},
+		clearData: (state) => {
+			state.cards = [];
+			localStorage.removeItem("cards");
 		},
 	},
 });
 
-export const { cardData } = cardFormSlice.actions;
+export const { cardData, deleteSingleItem, clearData } = cardFormSlice.actions;
 export default cardFormSlice.reducer;
