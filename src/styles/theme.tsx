@@ -24,6 +24,7 @@ export const theme = {
 		f1_4: "1.4rem",
 		f_normal: "1.6rem",
 		f2: "2rem",
+		f_h1: "3.5rem",
 		f_h2: "3rem",
 		f4_2: "4.2rem",
 	},
@@ -38,6 +39,10 @@ export const theme = {
 	border: {
 		b_1: ".1rem",
 		b1: "1rem",
+		b2: "2rem",
+		b3: "3rem",
+		b4: "4rem",
+		b5: "5rem",
 	},
 	padding: {
 		p_5: ".5rem",

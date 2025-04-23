@@ -26,7 +26,7 @@ export const SubMenuButton = styled(Button)`
 	margin-right: 0;
 `;
 
-export const SubpageTitle = styled.h1`
+export const SubpageTitle = styled.h2`
 	display: flex;
 	font-size: ${({ theme }) => theme.fontSize.f4_2};
 `;

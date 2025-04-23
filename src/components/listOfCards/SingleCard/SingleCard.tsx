@@ -8,6 +8,7 @@ type SingleCardProps = {
 	cardNumber: string;
 	expirationDate: string;
 	onDelete: (id: string) => void;
+	onClick: () => void;
 };
 
 function SingleCard({
@@ -16,13 +17,18 @@ function SingleCard({
 	cardNumber,
 	expirationDate,
 	onDelete,
+	onClick,
 }: SingleCardProps) {
-	const handleDelete = useCallback(() => {
-		onDelete(id);
-	}, [onDelete, id]);
+	const handleDelete = useCallback(
+		(e: React.MouseEvent) => {
+			e.stopPropagation();
+			onDelete(id);
+		},
+		[onDelete, id]
+	);
 
 	return (
-		<S.Li>
+		<S.Li onClick={onClick}>
 			{cardTitle}
 			<S.CardInfoContainer>
 				<S.CardDataBox>

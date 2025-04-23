@@ -18,3 +18,6 @@ export { default as CardsList } from "./listOfCards/CardsList";
 export { default as SingleCard } from "./listOfCards/SingleCard";
 export { default as ConfirmationModal } from "./listOfCards/ConfirmationModal";
 export { default as ModalIcon } from "./listOfCards/ModalIcon";
+export { default as MyCard } from "./myCardSection/MyCard";
+export { default as PaymentCard } from "./myCardSection/PaymentCard";
+export { default as SubpageTitle } from "./SubpageTitle";

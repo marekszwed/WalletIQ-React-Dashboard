@@ -6,5 +6,6 @@ export const Cards = styled.div`
 	background-color: ${({ theme }) => theme.primaryColors.white100};
 	height: 100%;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
+	padding-top: 7rem;
 `;
