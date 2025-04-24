@@ -1,14 +1,19 @@
 import { useLocation } from "react-router-dom";
 import * as S from "./SubpageTitle.styled";
 
-const PathToTitleItems: Record<string, string> = {
-	"/dashboard": "Home",
-	"/cards": "Cards",
+enum Paths {
+	Dashboard = "/dashboard",
+	Cards = "/cards",
+}
+
+const PathToTitleItems: Record<Paths, string> = {
+	[Paths.Dashboard]: "Home",
+	[Paths.Cards]: "Cards",
 };
 
 function SubpageTitle() {
 	const location = useLocation();
-	const title = PathToTitleItems[location.pathname] || null;
+	const title = PathToTitleItems[location.pathname as Paths] || null;
 
 	return (
 		<S.TitleContainer>

@@ -50,6 +50,7 @@ const cardFormSlice = createSlice({
 	},
 });
 
+export type { AddCardFormTypes };
 export const { cardData, deleteSingleItem, clearData, setSelectedCard } =
 	cardFormSlice.actions;
 export default cardFormSlice.reducer;
