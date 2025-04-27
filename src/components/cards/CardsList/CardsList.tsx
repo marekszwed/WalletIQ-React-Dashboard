@@ -2,7 +2,11 @@ import * as S from "./CardsList.styled";
 import SingleCard from "../SingleCard";
 import { RootState } from "../../../Store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSingleItem, setSelectedCard } from "../../forms/cardFormSlice";
+import {
+	AddCardFormTypes,
+	deleteSingleItem,
+	setSelectedCard,
+} from "../../forms/cardFormSlice";
 
 type CardListProps = {
 	onAddCardClick: () => void;
@@ -17,10 +21,9 @@ function CardsList({ onAddCardClick, onShowModal }: CardListProps) {
 		dispatch(deleteSingleItem({ id }));
 	};
 
-	const handleSelectCard = (id: string) => {
-		const selected = cards.find((card) => card.id === id);
-		if (selected) {
-			dispatch(setSelectedCard(selected));
+	const handleSelectCard = (card: AddCardFormTypes) => {
+		if (card) {
+			dispatch(setSelectedCard(card));
 		}
 	};
 
@@ -36,7 +39,7 @@ function CardsList({ onAddCardClick, onShowModal }: CardListProps) {
 			<S.Ul>
 				{cards.map((card) => (
 					<SingleCard
-						onClick={() => handleSelectCard(card.id)}
+						onClick={() => handleSelectCard(card)}
 						id={card.id}
 						key={card.id}
 						cardTitle={card.cardName}
