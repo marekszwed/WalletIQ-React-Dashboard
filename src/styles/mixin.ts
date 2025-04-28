@@ -19,3 +19,7 @@ export const Overlay = css`
 	justify-content: center;
 	z-index: ${({ theme }) => theme.zindex.overlay};
 `;
+
+export const Pointer = css`
+	cursor: pointer;
+`;

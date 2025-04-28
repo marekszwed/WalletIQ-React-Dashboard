@@ -8,6 +8,7 @@ export const theme = {
 		black: "#000",
 		transparent: "transparent",
 		error: "#be0303",
+		green500: "#078A00",
 		palette: {
 			white50: "#F9F7F7",
 			blue100: "#DBE2EF",
@@ -18,6 +19,8 @@ export const theme = {
 			blue: "#5087C2",
 			blue100: "#2C5A92",
 			grey: " #888888",
+			error400: "#810101",
+			green600: "#056900",
 		},
 	},
 	fontSize: {
