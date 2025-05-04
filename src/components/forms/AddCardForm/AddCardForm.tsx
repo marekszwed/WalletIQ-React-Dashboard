@@ -17,6 +17,7 @@ interface AddCardFormTypes {
 	creditCardNumber: string;
 	cvcNumber: string;
 	expirationDate: string;
+	availableBalance: string;
 }
 
 type AddCardFormProps = {
@@ -111,6 +112,15 @@ function AddCardForm({ isOpen, onClose }: AddCardFormProps) {
 						id="expiration-date"
 						placeholder="**/**"
 						maxLength={4}
+					/>
+					<S.InputError text={errors.expirationDate?.message || ""} />
+				</InputContainerFormLayout>
+				<InputContainerFormLayout>
+					<S.Label htmlFor="available-balance">Available Balance</S.Label>
+					<InputFormLayout
+						{...register("availableBalance")}
+						id="available-balance"
+						placeholder="0000.00"
 					/>
 					<S.InputError text={errors.expirationDate?.message || ""} />
 				</InputContainerFormLayout>

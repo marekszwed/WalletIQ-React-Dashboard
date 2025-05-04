@@ -8,7 +8,7 @@ export const Dashboard = styled.div`
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	grid-template-areas:
-		". . . . card"
+		"widget1 widget1 widget1 widget1 card"
 		". . . . card"
 		". . . . .";
 
