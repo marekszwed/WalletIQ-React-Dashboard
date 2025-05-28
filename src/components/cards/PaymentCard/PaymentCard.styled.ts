@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Pointer } from "../../../styles/mixin";
 
-export const PaymentCardBox = styled.div`
+export const PaymentCardBox = styled.button`
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -9,6 +9,7 @@ export const PaymentCardBox = styled.div`
 	margin-top: ${({ theme }) => theme.margin.m1};
 	width: 32.5rem;
 	height: 17rem;
+	border: none;
 	border-radius: ${({ theme }) => theme.border.b1};
 	overflow: hidden;
 	${Pointer}

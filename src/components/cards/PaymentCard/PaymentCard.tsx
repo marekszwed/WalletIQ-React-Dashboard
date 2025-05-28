@@ -4,14 +4,14 @@ import visaLogo from "/visa-svgrepo-com.svg";
 type PaymentCardProp = {
 	cardName?: string;
 	cardNumber: string;
-	expData: string;
+	expirationData: string;
 	onClick?: () => void;
 };
 
 function PaymentCard({
 	cardName,
 	cardNumber,
-	expData,
+	expirationData,
 	onClick,
 }: PaymentCardProp) {
 	return (
@@ -27,7 +27,7 @@ function PaymentCard({
 			</S.LogoAndTitleBox>
 			<S.CardInfo>
 				<S.PaymentNumber>{cardNumber}</S.PaymentNumber>
-				<S.ExpirationDate>{expData}</S.ExpirationDate>
+				<S.ExpirationDate>{expirationData}</S.ExpirationDate>
 			</S.CardInfo>
 			<S.VisaLogo src={visaLogo} />
 		</S.PaymentCardBox>
