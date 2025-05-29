@@ -4,16 +4,16 @@ import * as S from "./SummaryWidget.styled";
 export type SummaryWidgetProps = {
 	text: string;
 	icon: ReactNode;
-	sum: string;
+	amount: string;
 };
 
-function SummaryWidget({ text, icon, sum }: SummaryWidgetProps) {
+function SummaryWidget({ text, icon, amount }: SummaryWidgetProps) {
 	return (
 		<S.Widget>
 			<S.Container>
 				<S.Icon>{icon}</S.Icon>
 				<S.Text>{text}</S.Text>
-				<S.Summary>{sum}</S.Summary>
+				<S.Summary>{amount}</S.Summary>
 			</S.Container>
 		</S.Widget>
 	);
