@@ -19,11 +19,27 @@ export const SubMenu = styled.div`
 `;
 
 export const AddCardButton = styled(Button)`
-	margin-right: ${({ theme }) => theme.margin.m5};
+	margin-right: ${({ theme }) => theme.margin.m2};
+	background-color: ${({ theme }) => theme.primaryColors.green500};
+
+	&:hover {
+		background-color: ${({ theme }) => theme.primaryColors.hover.green600};
+	}
 `;
 
 export const SubMenuButton = styled(Button)`
 	margin-right: 0;
+	background-color: transparent;
+	color: ${({ theme }) => theme.primaryColors.error};
+	border: ${({ theme }) => theme.border.b_1} solid
+		${({ theme }) => theme.primaryColors.error};
+
+	&:hover {
+		background-color: transparent;
+		border: ${({ theme }) => theme.border.b_1} solid
+			${({ theme }) => theme.primaryColors.hover.error400};
+		color: ${({ theme }) => theme.primaryColors.hover.error400};
+	}
 `;
 
 export const SubpageTitle = styled.h2`
