@@ -10,7 +10,7 @@ function MyCard() {
 		(state: RootState) => state.card.selectedCard
 	);
 
-	const addChooseCardModalState = useDialogState();
+	const choseCardModalState = useDialogState();
 
 	return (
 		<S.MyCardContainer>
@@ -19,19 +19,19 @@ function MyCard() {
 				<PaymentCard
 					cardName={selectedCard.cardName}
 					cardNumber={selectedCard.creditCardNumber}
-					expData={selectedCard.expirationDate}
+					expirationData={selectedCard.expirationDate}
 				/>
 			) : (
 				<p>No card selected.</p>
 			)}
 			<S.MyCardButton
 				text="Choose Your Card"
-				onClick={addChooseCardModalState.toggleOpen}
+				onClick={choseCardModalState.open}
 			/>
-			{addChooseCardModalState.isOpen && (
+			{choseCardModalState.isOpen && (
 				<SelectCardModal
-					onOpen={addChooseCardModalState.toggleOpen}
-					onCancel={() => addChooseCardModalState.setIsOpen(true)}
+					onOpen={choseCardModalState.toggle}
+					onCancel={choseCardModalState.close}
 					title="Choose Your Card"
 				/>
 			)}

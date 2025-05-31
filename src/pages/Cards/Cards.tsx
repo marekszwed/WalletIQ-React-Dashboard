@@ -18,19 +18,19 @@ function Cards() {
 	return (
 		<S.Cards>
 			<CardsList
-				onAddCardClick={addCardModalState.toggleOpen}
-				onShowModal={addConfirmModalState.toggleOpen}
+				onAddCardClick={addCardModalState.open}
+				onShowModal={addConfirmModalState.open}
 			/>
 			<AddCardForm
 				isOpen={addCardModalState.isOpen}
-				onClose={() => addCardModalState.setIsOpen(false)}
+				onClose={addCardModalState.close}
 			/>
 			{addConfirmModalState.isOpen && (
 				<ConfirmationModal
 					title="Delete All"
 					description="This will permamently delete all card from your account"
-					onOpen={addConfirmModalState.toggleOpen}
-					onCancel={() => addConfirmModalState.setIsOpen(true)}
+					onClose={addConfirmModalState.close}
+					onCancel={addCardModalState.close}
 					onConfirm={removeAllReduxDataAndLS}
 				/>
 			)}

@@ -9,22 +9,24 @@ function CardsForSelectModal() {
 	const dispatch = useDispatch();
 	const cards = useSelector((state: RootState) => state.card.cards);
 
-	const handleSelectCard = (card: AddCardFormTypes) => {
+	const handleSelectCard = (card: AddCardFormTypes) => () => {
 		if (card) {
 			dispatch(setSelectedCard(card));
-			Toast.success(`You choosed ${card.cardName}`)
+			Toast.success(`You chose ${card.cardName}`);
+			return;
 		}
+		Toast.error("Something went wrong. Please try again.");
 	};
 
 	return (
 		<S.CardModalLayout>
 			{cards.map((card) => (
 				<PaymentCard
-					onClick={() => handleSelectCard(card)}
+					onClick={handleSelectCard(card)}
 					key={card.id}
 					cardName={card.cardName}
 					cardNumber={card.creditCardNumber}
-					expData={card.expirationDate}
+					expirationData={card.expirationDate}
 				/>
 			))}
 		</S.CardModalLayout>
