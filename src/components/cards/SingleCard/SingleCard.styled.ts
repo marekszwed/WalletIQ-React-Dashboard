@@ -6,7 +6,8 @@ export const Li = styled.li`
 	align-items: center;
 	width: 100%;
 	margin-bottom: ${({ theme }) => theme.margin.m2};
-	padding: ${({ theme }) => theme.padding.p_5};
+	padding: ${({ theme }) =>
+		`${theme.padding.p_5} ${theme.padding.p_5} ${theme.padding.p_5} ${theme.padding.p2}`};
 	font-size: ${({ theme }) => theme.fontSize.f2};
 	background-color: ${({ theme }) => theme.primaryColors.white};
 	border-radius: ${({ theme }) => theme.border.b1};
@@ -35,6 +36,7 @@ export const CardData = styled.p`
 `;
 
 export const Options = styled.div`
+	padding-right: ${({ theme }) => theme.padding.p2};
 	display: flex;
 	cursor: pointer;
 `;

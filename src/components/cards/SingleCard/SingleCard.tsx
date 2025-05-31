@@ -8,7 +8,7 @@ type SingleCardProps = {
 	cardNumber: string;
 	expirationDate: string;
 	onDelete: (id: string) => void;
-	onClick: () => void;
+	onClick?: () => void;
 };
 
 function SingleCard({

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../../common/Button";
 
 export const MyCardContainer = styled.aside`
 	position: relative;
@@ -20,4 +21,9 @@ export const Title = styled.h3`
 		${theme.margin.m2}`};
 	color: ${({ theme }) => theme.primaryColors.black};
 	font-size: ${({ theme }) => theme.fontSize.f2};
+`;
+
+export const MyCardButton = styled(Button)`
+	margin: ${({ theme }) => `${theme.margin.m2} 0 ${theme.margin.m2} 0`};
+	width: 90%;
 `;

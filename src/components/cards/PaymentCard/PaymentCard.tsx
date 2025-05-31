@@ -2,20 +2,32 @@ import * as S from "./PaymentCard.styled";
 import visaLogo from "/visa-svgrepo-com.svg";
 
 type PaymentCardProp = {
+	cardName?: string;
 	cardNumber: string;
-	expData: string;
+	expirationData: string;
+	onClick?: () => void;
 };
 
-function PaymentCard({ cardNumber, expData }: PaymentCardProp) {
+function PaymentCard({
+	cardName,
+	cardNumber,
+	expirationData,
+	onClick,
+}: PaymentCardProp) {
 	return (
-		<S.PaymentCardBox>
-			<S.FakeLogoBox>
-				<S.LogoCircle />
-				<S.SecondLogoCircle />
-			</S.FakeLogoBox>
+		<S.PaymentCardBox onClick={onClick}>
+			<S.LogoAndTitleBox>
+				<S.FakeLogoBox>
+					<S.LogoCircle />
+					<S.SecondLogoCircle />
+				</S.FakeLogoBox>
+				<S.TitleBox>
+					<S.Title>{cardName}</S.Title>
+				</S.TitleBox>
+			</S.LogoAndTitleBox>
 			<S.CardInfo>
 				<S.PaymentNumber>{cardNumber}</S.PaymentNumber>
-				<S.ExpirationDate>{expData}</S.ExpirationDate>
+				<S.ExpirationDate>{expirationData}</S.ExpirationDate>
 			</S.CardInfo>
 			<S.VisaLogo src={visaLogo} />
 		</S.PaymentCardBox>

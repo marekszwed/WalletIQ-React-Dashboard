@@ -3,7 +3,7 @@ import * as S from "./Modal.styled";
 import ReactDOM from "react-dom";
 
 type ModalProps = {
-	onOpen: () => void;
+	onClose: () => void;
 	onCancel?: () => void;
 	onConfirm?: () => void;
 	title: string;
@@ -13,7 +13,7 @@ type ModalProps = {
 };
 
 function Modal({
-	onOpen,
+	onClose,
 	title,
 	description,
 	children,
@@ -22,7 +22,7 @@ function Modal({
 	className,
 }: ModalProps) {
 	return ReactDOM.createPortal(
-		<S.ModalOverlay onClick={onOpen} className={className}>
+		<S.ModalOverlay onClick={onClose} className={className}>
 			<S.ModalContainer>
 				{children}
 				<S.AnnouncmentBox>

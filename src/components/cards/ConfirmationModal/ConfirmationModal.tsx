@@ -4,7 +4,7 @@ import ModalIcon from "../ModalIcon";
 type ConfirmationModal = {
 	title: string;
 	description: string;
-	onOpen: () => void;
+	onClose: () => void;
 	onCancel?: () => void;
 	onConfirm?: () => void;
 };
@@ -12,7 +12,7 @@ type ConfirmationModal = {
 function ConfirmationModal({
 	title,
 	description,
-	onOpen,
+	onClose,
 	onCancel,
 	onConfirm,
 }: ConfirmationModal) {
@@ -21,7 +21,7 @@ function ConfirmationModal({
 			title={title}
 			description={description}
 			children={<ModalIcon />}
-			onOpen={onOpen}
+			onClose={onClose}
 			onCancel={onCancel}
 			onConfirm={onConfirm}
 		/>
