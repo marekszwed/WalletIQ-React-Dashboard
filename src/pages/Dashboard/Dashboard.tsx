@@ -13,23 +13,23 @@ function Dashboard() {
 
 	const availableBalance = selectedCard?.availableBalance;
 
-	const SummeryWidgetInfos: SummaryWidgetProps[] = [
-		{ text: "Balance", icon: <WalletMinimal />, sum: availableBalance || "0000.00" },
-		{ text: "Income", icon: <BanknoteArrowDown />, sum: "8450.66" },
-		{ text: "Expenses", icon: <WalletMinimal />, sum: "2540.12" },
-		{ text: "Savings", icon: <HandCoins />, sum: "2400" },
+	const summaryWidgetInfos: SummaryWidgetProps[] = [
+		{ text: "Balance", icon: <WalletMinimal />, amount: availableBalance || "0000.00" },
+		{ text: "Income", icon: <BanknoteArrowDown />, amount: "8450.66" },
+		{ text: "Expenses", icon: <WalletMinimal />, amount: "2540.12" },
+		{ text: "Savings", icon: <HandCoins />, amount: "2400" },
 	];
 
 	return (
 		<S.Dashboard>
 			<WidgetContainer>
-				{SummeryWidgetInfos.map((info, index) => (
+				{summaryWidgetInfos.map((info, index) => (
 					<SummaryWidget
 						key={index}
 						text={info.text}
 						icon={info.icon}
-						sum={info.sum}
-					></SummaryWidget>
+						amount={info.amount}
+					/>
 				))}
 			</WidgetContainer>
 			<MyCard />
