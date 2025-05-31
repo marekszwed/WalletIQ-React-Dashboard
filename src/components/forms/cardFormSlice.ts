@@ -6,6 +6,7 @@ interface AddCardFormTypes {
 	creditCardNumber: string;
 	cvcNumber: string;
 	expirationDate: string;
+	availableBalance: string;
 }
 
 interface CardState {

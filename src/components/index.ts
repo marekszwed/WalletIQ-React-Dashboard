@@ -21,4 +21,4 @@ export { default as ModalIcon } from "./cards/ModalIcon";
 export { default as MyCard } from "./cards/MyCard";
 export { default as PaymentCard } from "./cards/PaymentCard";
 export { default as SubpageTitle } from "./common/SubpageTitle";
-export { default as CardModalArrangement } from "./cards/CardsForSelectModal";
+

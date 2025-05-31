@@ -27,6 +27,8 @@ export const theme = {
 		f1_4: "1.4rem",
 		f_normal: "1.6rem",
 		f2: "2rem",
+		f2_4: "2.4rem",
+		f3: "3rem",
 		f_h1: "3.5rem",
 		f_h2: "3rem",
 		f4_2: "4.2rem",
@@ -75,6 +77,13 @@ export const theme = {
 		m7: "7rem",
 		m8: "8rem",
 		m9: "9rem",
+	},
+	grid: {
+		g_8: ".8rem",
+		g1_6: "1.6rem",
+		g2_4: "2.4rem",
+		g3_2: "3.2rem",
+		g4: "4rem",
 	},
 	zindex: {
 		header: "6",
