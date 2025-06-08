@@ -19,7 +19,7 @@ interface NavigationItem {
 
 const navigationItems: NavigationItem[] = [
 	{ icon: <House />, title: "Home", path: "/dashboard" },
-	{ icon: <BadgeDollarSign />, title: "Transactions", path: "" },
+	{ icon: <BadgeDollarSign />, title: "Transactions", path: "/transactions" },
 	{ icon: <CreditCard />, title: "Cards", path: "/cards" },
 	{ icon: <Wallet />, title: "Budget", path: "" },
 	{ icon: <ChartNoAxesCombined />, title: "Charts", path: "" },

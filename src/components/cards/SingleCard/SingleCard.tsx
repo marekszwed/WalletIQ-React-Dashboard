@@ -1,4 +1,3 @@
-import { Trash2 } from "lucide-react";
 import * as S from "./SingleCard.styled";
 import { useCallback } from "react";
 
@@ -36,7 +35,7 @@ function SingleCard({
 					<S.CardData>Expiration date: {expirationDate}</S.CardData>
 				</S.CardDataBox>
 				<S.Options>
-					<Trash2 onClick={handleDelete} />
+					<S.Icon onClick={handleDelete} />
 				</S.Options>
 			</S.CardInfoContainer>
 		</S.Li>

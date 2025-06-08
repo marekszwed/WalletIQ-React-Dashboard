@@ -1,3 +1,4 @@
+import { Trash2 } from "lucide-react";
 import styled from "styled-components";
 
 export const Li = styled.li`
@@ -39,4 +40,8 @@ export const Options = styled.div`
 	padding-right: ${({ theme }) => theme.padding.p2};
 	display: flex;
 	cursor: pointer;
+`;
+
+export const Icon = styled(Trash2)`
+	color: ${({ theme }) => theme.primaryColors.error};
 `;

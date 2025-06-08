@@ -4,11 +4,13 @@ import * as S from "./SubpageTitle.styled";
 enum Paths {
 	Dashboard = "/dashboard",
 	Cards = "/cards",
+	Transactions = "/transactions",
 }
 
 const PathToTitleItems: Record<Paths, string> = {
 	[Paths.Dashboard]: "Home",
 	[Paths.Cards]: "Cards",
+	[Paths.Transactions]: "Transactions",
 };
 
 function SubpageTitle() {
