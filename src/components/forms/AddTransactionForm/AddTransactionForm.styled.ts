@@ -8,7 +8,9 @@ export const Form = styled(FormLayout)`
 	max-width: 50rem;
 	background-color: ${({ theme }) => theme.primaryColors.white};
 	border-radius: ${({ theme }) => theme.border.b1};
+	margin: 0;
 	overflow: hidden;
+	padding: ${({ theme }) => `${theme.padding.p2} ${theme.padding.p3}`};
 `;
 
 export const Heading = styled.div`
@@ -16,8 +18,7 @@ export const Heading = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin: ${({ theme }) => `${theme.margin.m2} ${theme.margin.m3}`};
-	width: 100%;
+	margin: ${({ theme }) => `${theme.margin.m2} 0`};
 `;
 
 export const Legend = styled.legend`
@@ -33,18 +34,16 @@ export const Description = styled.p`
 `;
 
 export const Label = styled(LabelFormLayout)`
-	margin-inline: ${({ theme }) => theme.margin.m2};
+	padding-left: 0;
 `;
 
 export const Input = styled(InputFormLayout)`
-	margin-inline: ${({ theme }) => theme.margin.m3};
 	border: ${({ theme }) =>
 		`${theme.border.b_1} solid ${theme.primaryColors.white300}`};
 `;
 
 export const InputError = styled(CustomError)`
-	padding: ${({ theme }) =>
-		`${theme.padding.p_3} 0 ${theme.padding.p1} ${theme.padding.p3}`};
+	padding: ${({ theme }) => `${theme.padding.p_3} 0 ${theme.padding.p1} 0`};
 `;
 
 export const TransactionTypeBox = styled.div`
@@ -65,7 +64,6 @@ export const Options = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	margin-left: ${({ theme }) => `${theme.margin.m3}`};
 	width: 100%;
 `;
 
@@ -76,25 +74,19 @@ export const LabelForTransactionType = styled.label`
 export const IncomeInput = styled.input`
 	font-size: ${({ theme }) => theme.fontSize.f_normal};
 `;
-export const OutcomeInput = styled(IncomeInput)`
-	margin-left: 3rem;
-`;
 
-export const CalendarInput = styled(Input)`
-	width: 75%;
-	padding-inline: 3rem;
+export const OutcomeInput = styled(IncomeInput)`
+	margin-left: ${({ theme }) => theme.margin.m3};
 `;
 
 export const TextArea = styled.textarea`
 	display: flex;
-	width: 87%;
 	max-height: 5rem;
 	border-radius: ${({ theme }) => theme.border.b1};
 	border: ${({ theme }) =>
 		`${theme.border.b_1} solid ${theme.primaryColors.white300}`};
 	font-size: ${({ theme }) => theme.fontSize.f_normal};
 	resize: vertical;
-	margin-inline: ${({ theme }) => theme.margin.m3};
 `;
 
 export const ButtonContainer = styled.div`
@@ -102,8 +94,7 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	margin: ${({ theme }) =>
-		`0 ${theme.margin.m3} ${theme.margin.m3} ${theme.margin.m3}`};
+	margin: ${({ theme }) => `0 0 ${theme.margin.m3} ${theme.margin.m3}`};
 `;
 
 export const CancelButton = styled(Button)`

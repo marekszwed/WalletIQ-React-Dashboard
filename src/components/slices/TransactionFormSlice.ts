@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TransactionTypes } from "../../helpers/types";
 
 export interface AddTransactionType {
 	id: string;
 	title: string;
 	amount: number;
-	transactionType: "income" | "outcome";
+	transactionType: TransactionTypes;
 	category: string;
 	date: string;
 	description?: string;

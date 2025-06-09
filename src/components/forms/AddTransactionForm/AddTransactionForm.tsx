@@ -109,7 +109,7 @@ function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 				<SelectCategory register={register} />
 				<InputContainerFormLayout>
 					<S.Label htmlFor="date">Date</S.Label>
-					<S.CalendarInput {...register("date")} id="date" type="date" />
+					<S.Input {...register("date")} id="date" type="date" />
 					<S.InputError text={errors.date?.message || ""} />
 				</InputContainerFormLayout>
 				<InputContainerFormLayout>
