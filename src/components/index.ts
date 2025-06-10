@@ -22,5 +22,8 @@ export { default as MyCard } from "./cards/MyCard";
 export { default as PaymentCard } from "./cards/PaymentCard";
 export { default as SubpageTitle } from "./common/SubpageTitle";
 export { default as SummaryWidget } from "./widgets/SummaryWidget";
-
-
+export { default as TransactionList } from "./transactions/TransactionList";
+export { default as SinglePayment } from "./transactions/SinglePayment";
+export { default as GeneralModal } from "./common/GeneralModal";
+export { default as AddTransactionForm } from "./forms/AddTransactionForm";
+export { default as SelectCategory } from "./transactions/SelectCategory";

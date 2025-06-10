@@ -7,10 +7,11 @@ import { cardData } from "../cardFormSlice";
 import { useNavigate } from "react-router-dom";
 import InputFormLayout from "../../Layout/InputFormLayout";
 import InputContainerFormLayout from "../../Layout/InputContainerFormLayout";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import Toast from "../../Toast";
 import { useRef } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside";
+import GeneralModal from "../../common/GeneralModal";
 
 interface AddCardFormTypes {
 	cardName: string;
@@ -72,8 +73,8 @@ function AddCardForm({ isOpen, onClose }: AddCardFormProps) {
 
 	if (!isOpen) return null;
 
-	return ReactDOM.createPortal(
-		<S.FormOverlay>
+	return (
+		<GeneralModal>
 			<S.Form ref={modalRef} onSubmit={handleSubmit(onSubmit)}>
 				<InputContainerFormLayout>
 					<S.Label htmlFor="card-name">Name your card</S.Label>
@@ -126,8 +127,7 @@ function AddCardForm({ isOpen, onClose }: AddCardFormProps) {
 				</InputContainerFormLayout>
 				<S.SubmitButton type="submit" text="Save" />
 			</S.Form>
-		</S.FormOverlay>,
-		document.getElementById("cardForm") as HTMLElement
+		</GeneralModal>
 	);
 }
 

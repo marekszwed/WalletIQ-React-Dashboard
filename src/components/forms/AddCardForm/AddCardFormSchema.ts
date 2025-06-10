@@ -8,5 +8,5 @@ export const AddCardSchema = yup.object({
 		.required("Credit card number is required"),
 	cvcNumber: yup.string().min(3).required("CVC number is required"),
 	expirationDate: yup.string().min(4).required("Expiration date is required"),
-	availableBalance: yup.string().required("Available balance is required")
+	availableBalance: yup.string().required("Available balance is required"),
 });

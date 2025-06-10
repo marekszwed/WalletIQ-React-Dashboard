@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/Login/LoginPage";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Cards from "../pages/Cards/Cards";
+import Transactions from "../pages/Transactions/Transactions";
 
 function RoutesPaths() {
 	return (
@@ -11,6 +12,7 @@ function RoutesPaths() {
 			<Route path="/login" element={<LoginPage />} />
 			<Route path="/dashboard" element={<Dashboard />} />
 			<Route path="/cards" element={<Cards />} />
+			<Route path="/transactions" element={<Transactions />} />
 		</Routes>
 	);
 }

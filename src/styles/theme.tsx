@@ -6,6 +6,7 @@ export const theme = {
 		white300: "#cecbcb",
 		blue300: "#2e63a5",
 		black: "#000",
+		black400: "#00000065",
 		transparent: "transparent",
 		error: "#be0303",
 		green500: "#078A00",
@@ -50,6 +51,7 @@ export const theme = {
 		b5: "5rem",
 	},
 	padding: {
+		p_3: ".3rem",
 		p_5: ".5rem",
 		p_8: ".8rem",
 		p1: "1rem",
@@ -66,10 +68,12 @@ export const theme = {
 		p10: "20rem",
 	},
 	margin: {
+		m_1: ".1rem",
 		m_5: ".5rem",
 		m_6: ".6rem",
 		m1: "1rem",
 		m2: "2rem",
+		m2_5: "2.5rem",
 		m3: "3rem",
 		m4: "4rem",
 		m5: "5rem",
