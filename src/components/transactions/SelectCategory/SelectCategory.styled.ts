@@ -5,7 +5,7 @@ import LabelFormLayout from "../../Layout/LabelFormLayout";
 
 export const SelectorBox = styled(InputContainerFormLayout)`
 	position: relative;
-	margin: ${({ theme }) => `0 0 ${theme.margin.m3} ${theme.margin.m3}`};
+	margin: ${({ theme }) => `0 0 ${theme.margin.m3} 0`};
 `;
 
 export const Label = styled(LabelFormLayout)`
@@ -13,8 +13,6 @@ export const Label = styled(LabelFormLayout)`
 `;
 
 export const Select = styled.select`
-	box-sizing: border-box;
-	max-width: 88%;
 	width: 100%;
 	font-size: ${({ theme }) => theme.fontSize.f_normal};
 	padding: ${({ theme }) => `${theme.padding.p1} ${theme.padding.p1}`};
