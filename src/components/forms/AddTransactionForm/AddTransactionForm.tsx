@@ -4,7 +4,7 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import { useRef } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AddTransactionSchema } from "./AddTransactionSchema";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SelectCategory from "../../transactions/SelectCategory";
 import { Button, InputContainerFormLayout, Toast } from "../..";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,8 @@ import {
 	AddTransactionType,
 	transactionData,
 } from "../../slices/TransactionFormSlice";
+import { updateBalanceWithTransaction } from "../../slices/BudgetSlice";
+import { RootState } from "../../../Store/store";
 
 type AddTransactionProps = {
 	isOpen?: boolean;
@@ -20,6 +22,9 @@ type AddTransactionProps = {
 
 function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 	const dispatch = useDispatch();
+	const selectedCard = useSelector(
+		(state: RootState) => state.card.selectedCard
+	);
 	const modalRef = useRef<HTMLFormElement>(null);
 
 	useClickOutside({ ref: modalRef, onClickOutside: onClose });
@@ -28,10 +33,13 @@ function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 		register,
 		handleSubmit,
 		reset,
+		watch,
 		formState: { errors },
 	} = useForm<Omit<AddTransactionType, "id">>({
 		resolver: yupResolver(AddTransactionSchema),
 	});
+
+	const transactionType = watch("transactionType");
 
 	async function onSubmit(data: Omit<AddTransactionType, "id">) {
 		try {
@@ -41,6 +49,16 @@ function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 			};
 
 			const result = await dispatch(transactionData(newTransaction));
+
+			if (selectedCard) {
+				dispatch(
+					updateBalanceWithTransaction({
+						cardId: selectedCard.id,
+						transaction: newTransaction,
+					})
+				);
+			}
+
 			if (result.type === "transaction/transactionData") {
 				onClose();
 				reset();
@@ -106,7 +124,7 @@ function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 					</S.Options>
 					<S.InputError text={errors.transactionType?.message || ""} />
 				</InputContainerFormLayout>
-				<SelectCategory register={register} />
+				<SelectCategory register={register} transactionType={transactionType} />
 				<InputContainerFormLayout>
 					<S.Label htmlFor="date">Date</S.Label>
 					<S.Input {...register("date")} id="date" type="date" />
