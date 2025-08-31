@@ -35,29 +35,33 @@ function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 		reset,
 		watch,
 		formState: { errors },
-	} = useForm<Omit<AddTransactionType, "id">>({
+	} = useForm<Omit<AddTransactionType, "id" | "cardId">>({
 		resolver: yupResolver(AddTransactionSchema),
 	});
 
 	const transactionType = watch("transactionType");
 
-	async function onSubmit(data: Omit<AddTransactionType, "id">) {
+	async function onSubmit(data: Omit<AddTransactionType, "id" | "cardId">) {
+		if (!selectedCard) {
+			Toast.warning("Please select a card first");
+			return;
+		}
+
 		try {
 			const newTransaction = {
 				...data,
 				id: crypto.randomUUID(),
+				cardId: selectedCard.id,
 			};
 
 			const result = await dispatch(transactionData(newTransaction));
 
-			if (selectedCard) {
-				dispatch(
-					updateBalanceWithTransaction({
-						cardId: selectedCard.id,
-						transaction: newTransaction,
-					})
-				);
-			}
+			dispatch(
+				updateBalanceWithTransaction({
+					cardId: selectedCard.id,
+					transaction: newTransaction,
+				})
+			);
 
 			if (result.type === "transaction/transactionData") {
 				onClose();

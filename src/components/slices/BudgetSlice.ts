@@ -16,7 +16,9 @@ interface UpdateBudgetPayload {
 	transaction: AddTransactionType;
 }
 
-const initialState: BudgetState = {};
+const initialState: BudgetState = JSON.parse(
+	localStorage.getItem("budget") || "{}"
+);
 
 const budgetSlice = createSlice({
 	name: "budget",
@@ -43,6 +45,8 @@ const budgetSlice = createSlice({
 				state[cardId].outcome += transaction.amount;
 				state[cardId].balance -= transaction.amount;
 			}
+
+			localStorage.setItem("budget", JSON.stringify(state));
 		},
 		updategCardBudget: (
 			state,
@@ -55,10 +59,36 @@ const budgetSlice = createSlice({
 					balance: action.payload.availableBalance,
 				};
 			}
+
+			localStorage.setItem("budget", JSON.stringify(state));
+		},
+
+		changeBalanceWithTransaction: (
+			state,
+			action: PayloadAction<{ cardId: string; transaction: AddTransactionType }>
+		) => {
+			const { cardId, transaction } = action.payload;
+
+			if (!state[cardId]) return;
+
+			const absAmount = Math.abs(transaction.amount);
+
+			if (transaction.transactionType === "income") {
+				state[cardId].income -= absAmount;
+				state[cardId].balance -= absAmount;
+			} else if (transaction.transactionType === "outcome") {
+				state[cardId].outcome -= absAmount;
+				state[cardId].balance += absAmount;
+			}
+
+			localStorage.setItem("budget", JSON.stringify(state));
 		},
 	},
 });
 
-export const { updateBalanceWithTransaction, updategCardBudget } =
-	budgetSlice.actions;
+export const {
+	updateBalanceWithTransaction,
+	updategCardBudget,
+	changeBalanceWithTransaction,
+} = budgetSlice.actions;
 export default budgetSlice.reducer;

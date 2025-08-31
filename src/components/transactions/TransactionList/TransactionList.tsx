@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Store/store";
 import SinglePayment from "../SinglePayment";
 import { deleteSingleTransaction } from "../../slices/TransactionFormSlice";
+import { changeBalanceWithTransaction } from "../../slices/BudgetSlice";
 
 type TransactionListTypes = {
 	onShowModal: () => void;
@@ -12,10 +13,23 @@ function TransactionList({ onShowModal }: TransactionListTypes) {
 	const transactions = useSelector(
 		(state: RootState) => state.transaction.transactions
 	);
+
+	const selectedCard = useSelector(
+		(state: RootState) => state.card.selectedCard
+	);
 	const dispatch = useDispatch();
 
 	const handleRemoveSingleTransaction = (id: string) => {
+		const transactionToDelete = transactions.find((t) => t.id === id);
+		if (!transactionToDelete || !selectedCard) return;
+
 		dispatch(deleteSingleTransaction({ id }));
+		dispatch(
+			changeBalanceWithTransaction({
+				cardId: selectedCard?.id,
+				transaction: transactionToDelete,
+			})
+		);
 	};
 	return (
 		<S.TransactionContainer>

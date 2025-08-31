@@ -16,7 +16,7 @@ function Header() {
 				<S.ButtonsContainer>
 					<S.HeaderButton
 						href={!isNotAllowedPath ? "/" : "/login"}
-						text={isNotAllowedPath ? "Zaloguj się" : "Wyloguj się"}
+						text={isNotAllowedPath ? "Log in" : "Log out"}
 					/>
 				</S.ButtonsContainer>
 			)}

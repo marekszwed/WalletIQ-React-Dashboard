@@ -20,5 +20,14 @@
 		"numberOfYourCreditCard": "Numer Twojej karty kredytowej",
 		"cvcNumber": "Numer CVC",
 		"expirationDate": "Data wygaśnięcia"
+	},
+	"Navitation": {
+		"home": "Home",
+		"transactions": "Transakcje",
+		"cards": "Karty",
+		"budget": "Budżet",
+		"charts": "Wykresy",
+		"users": "Użytkownicy",
+		"settings": "Ustawienia"
 	}
 }

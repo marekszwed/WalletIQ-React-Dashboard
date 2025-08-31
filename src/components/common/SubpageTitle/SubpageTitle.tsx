@@ -5,12 +5,14 @@ enum Paths {
 	Dashboard = "/dashboard",
 	Cards = "/cards",
 	Transactions = "/transactions",
+	Charts = "/charts",
 }
 
 const PathToTitleItems: Record<Paths, string> = {
 	[Paths.Dashboard]: "Home",
 	[Paths.Cards]: "Cards",
 	[Paths.Transactions]: "Transactions",
+	[Paths.Charts]: "Charts",
 };
 
 function SubpageTitle() {

@@ -9,6 +9,7 @@ export interface AddTransactionType {
 	category: string;
 	date: string;
 	description?: string;
+	cardId: string;
 }
 
 interface TransactionState {

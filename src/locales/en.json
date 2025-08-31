@@ -20,5 +20,14 @@
 		"numberOfYourCreditCard": "Number of your credit card",
 		"cvcNumber": "CVC number",
 		"expirationDate": "Expiration date"
+	},
+	"Navitation": {
+		"home": "Home",
+		"transactions": "Transactions",
+		"cards": "Cards",
+		"budget": "Budget",
+		"charts": "Charts",
+		"users": "Users",
+		"settings": "Settings"
 	}
 }

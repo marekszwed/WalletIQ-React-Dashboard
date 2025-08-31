@@ -27,3 +27,7 @@ export { default as SinglePayment } from "./transactions/SinglePayment";
 export { default as GeneralModal } from "./common/GeneralModal";
 export { default as AddTransactionForm } from "./forms/AddTransactionForm";
 export { default as SelectCategory } from "./transactions/SelectCategory";
+export { default as PieChartLayout } from "./Layout/PieChartLayout";
+export { default as PieChartGeneralInfo } from "./charts/PieChartGeneralInfo";
+export { default as IncomeOutcomeBarChart } from "./charts/IncomeOutcomeBarChart";
+export { default as PieChartCategoryInfo } from "./charts/PieChartCategoryInfo";
