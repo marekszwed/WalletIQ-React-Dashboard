@@ -3,7 +3,10 @@ import GeneralModal from "../../common/GeneralModal";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { useRef } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AddTransactionSchema } from "./AddTransactionSchema";
+import {
+	AddTransactionFormData,
+	AddTransactionSchema,
+} from "./AddTransactionSchema";
 import { useDispatch, useSelector } from "react-redux";
 import SelectCategory from "../../transactions/SelectCategory";
 import { Button, InputContainerFormLayout, Toast } from "../..";
@@ -35,7 +38,7 @@ function AddTransactionForm({ isOpen, onClose }: AddTransactionProps) {
 		reset,
 		watch,
 		formState: { errors },
-	} = useForm<Omit<AddTransactionType, "id" | "cardId">>({
+	} = useForm<AddTransactionFormData>({
 		resolver: yupResolver(AddTransactionSchema),
 	});
 

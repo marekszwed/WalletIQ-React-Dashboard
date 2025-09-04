@@ -23,17 +23,6 @@ export const theme = {
 			error400: "#810101",
 			green600: "#056900",
 		},
-		charts: {
-			green: "#00C49F",
-			orange: "#FF8042",
-			blue: "#5d9aff",
-			pink: "#bd5a91",
-			sky: "#aea3f9",
-			red500: "#ff6e80",
-			yellow: "#acfa70",
-			blue800: "#32315b",
-			sand: "#d2d389",
-		},
 	},
 	fontSize: {
 		f1_4: "1.4rem",
