@@ -4,6 +4,7 @@ import { RootState } from "../../../Store/store";
 import SinglePayment from "../SinglePayment";
 import { deleteSingleTransaction } from "../../slices/TransactionFormSlice";
 import { changeBalanceWithTransaction } from "../../slices/BudgetSlice";
+import { useMemo } from "react";
 
 type TransactionListTypes = {
 	onShowModal: () => void;
@@ -18,6 +19,11 @@ function TransactionList({ onShowModal }: TransactionListTypes) {
 		(state: RootState) => state.card.selectedCard
 	);
 	const dispatch = useDispatch();
+
+	const filteredTransactions = useMemo(() => {
+		if (!selectedCard) return [];
+		return transactions.filter((t) => t.cardId === selectedCard.id);
+	}, [transactions, selectedCard]);
 
 	const handleRemoveSingleTransaction = (id: string) => {
 		const transactionToDelete = transactions.find((t) => t.id === id);
@@ -41,7 +47,7 @@ function TransactionList({ onShowModal }: TransactionListTypes) {
 				<S.AddTransactionButton onClick={onShowModal} text="Add Transaction" />
 			</S.SubMenu>
 			<S.Ul>
-				{transactions.map((transaction) => (
+				{filteredTransactions.map((transaction) => (
 					<SinglePayment
 						key={transaction.id}
 						id={transaction.id}

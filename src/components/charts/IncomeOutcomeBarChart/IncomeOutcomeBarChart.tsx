@@ -30,10 +30,19 @@ function IncomeOutcomeBarChart() {
 		(state: RootState) => state.transaction.transactions
 	);
 
-	const summaryArray: MonthlySummary[] = useMemo(() => {
-		const summaryMap: Record<string, MonthlySummary> = {};
+	const selectedCard = useSelector(
+		(state: RootState) => state.card.selectedCard
+	);
 
-		for (const transaction of transactions) {
+	const filteredTransactions = useMemo(() => {
+		if (!selectedCard) return [];
+		return transactions.filter((t) => t.cardId === selectedCard.id);
+	}, [transactions, selectedCard]);
+
+	const summaryArray: MonthlySummary[] = useMemo(() => {
+		const summaryMap = filteredTransactions.reduce<
+			Record<string, MonthlySummary>
+		>((acc, transaction) => {
 			const date = new Date(transaction.date);
 			const month = date.getMonth();
 			const year = date.getFullYear();
@@ -54,23 +63,20 @@ function IncomeOutcomeBarChart() {
 				year: "numeric",
 			});
 
-			if (summaryMap[key]) {
-				summaryMap[key].income += income;
-				summaryMap[key].outcome += outcome;
+			if (acc[key]) {
+				acc[key].income += income;
+				acc[key].outcome += outcome;
 			} else {
-				summaryMap[key] = {
-					year,
-					month,
-					income,
-					outcome,
-					label,
-				};
+				acc[key] = { year, month, income, outcome, label };
 			}
-		}
+
+			return acc;
+		}, {});
+
 		return Object.values(summaryMap).sort((a, b) =>
 			a.year !== b.year ? a.year - b.year : a.month - b.month
 		);
-	}, [transactions]);
+	}, [filteredTransactions]);
 
 	const chartWidth = Math.max(summaryArray.length * 200, 400);
 
