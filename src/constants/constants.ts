@@ -5,3 +5,10 @@ export const Routes = {
 	cards: "/cards",
 	transactions: "/transactions",
 };
+
+export const LOCAL_STORAGE_KEYS = {
+	budget: "budget",
+	transactions: "transactions",
+	cards: "cards",
+	selectedCard: "selectedCard",
+} as const;

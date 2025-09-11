@@ -72,6 +72,7 @@ export const theme = {
 		m_5: ".5rem",
 		m_6: ".6rem",
 		m1: "1rem",
+		m1_5: "1.5rem",
 		m2: "2rem",
 		m2_5: "2.5rem",
 		m3: "3rem",

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TransactionTypes } from "../../helpers/types";
+import { setStorageElement } from "../../helpers/localStorage";
+import { LOCAL_STORAGE_KEYS } from "../../constants/constants";
 
 export interface AddTransactionType {
 	id: string;
@@ -9,6 +11,7 @@ export interface AddTransactionType {
 	category: string;
 	date: string;
 	description?: string;
+	cardId: string;
 }
 
 interface TransactionState {
@@ -39,7 +42,7 @@ const transactionSlice = createSlice({
 			};
 
 			state.transactions.push(finalTransaction);
-			localStorage.setItem("transactions", JSON.stringify(state.transactions));
+			setStorageElement(LOCAL_STORAGE_KEYS.transactions, state.transactions);
 		},
 		deleteSingleTransaction: (
 			state,
@@ -52,7 +55,8 @@ const transactionSlice = createSlice({
 			state.transactions = state.transactions.filter(
 				(transaction) => transaction.id !== action.payload.id
 			);
-			localStorage.setItem("transactions", JSON.stringify(state.transactions));
+
+			setStorageElement(LOCAL_STORAGE_KEYS.transactions, state.transactions);
 		},
 	},
 });

@@ -1,10 +1,11 @@
 import { UseFormRegister } from "react-hook-form";
 import * as S from "./SelectCategory.styled";
 import { AddTransactionType } from "../../slices/TransactionFormSlice";
+import { TransactionTypes } from "../../../helpers/types";
 
 type Props = {
-	register: UseFormRegister<Omit<AddTransactionType, "id">>;
-	transactionType: "income" | "outcome" | undefined;
+	register: UseFormRegister<Omit<AddTransactionType, "id" | "cardId">>;
+	transactionType: TransactionTypes | undefined;
 };
 
 const incomeItems = [
@@ -40,7 +41,7 @@ function SelectCategory({ register, transactionType }: Props) {
 			<S.Label htmlFor="category-selector">Category</S.Label>
 			<S.Select id="category-selector" {...register("category")}>
 				{categories.map((item) => (
-					<S.Option>{item.option}</S.Option>
+					<S.Option key={item.option}>{item.option}</S.Option>
 				))}
 			</S.Select>
 		</S.SelectorBox>

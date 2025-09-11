@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AddTransactionType } from "./TransactionFormSlice";
+import { LOCAL_STORAGE_KEYS } from "../../constants/constants";
+import { setStorageElement } from "../../helpers/localStorage";
 
 interface BudgetData {
 	balance: number;
@@ -16,7 +18,9 @@ interface UpdateBudgetPayload {
 	transaction: AddTransactionType;
 }
 
-const initialState: BudgetState = {};
+const initialState: BudgetState = JSON.parse(
+	localStorage.getItem(LOCAL_STORAGE_KEYS.budget) || "{}"
+);
 
 const budgetSlice = createSlice({
 	name: "budget",
@@ -43,6 +47,8 @@ const budgetSlice = createSlice({
 				state[cardId].outcome += transaction.amount;
 				state[cardId].balance -= transaction.amount;
 			}
+
+			setStorageElement(LOCAL_STORAGE_KEYS.budget, state);
 		},
 		updategCardBudget: (
 			state,
@@ -55,10 +61,36 @@ const budgetSlice = createSlice({
 					balance: action.payload.availableBalance,
 				};
 			}
+
+			setStorageElement(LOCAL_STORAGE_KEYS.budget, state);
+		},
+
+		changeBalanceWithTransaction: (
+			state,
+			action: PayloadAction<{ cardId: string; transaction: AddTransactionType }>
+		) => {
+			const { cardId, transaction } = action.payload;
+
+			if (!state[cardId]) return;
+
+			const absAmount = Math.abs(transaction.amount);
+
+			if (transaction.transactionType === "income") {
+				state[cardId].income -= absAmount;
+				state[cardId].balance -= absAmount;
+			} else if (transaction.transactionType === "outcome") {
+				state[cardId].outcome -= absAmount;
+				state[cardId].balance += absAmount;
+			}
+
+			setStorageElement(LOCAL_STORAGE_KEYS.budget, state);
 		},
 	},
 });
 
-export const { updateBalanceWithTransaction, updategCardBudget } =
-	budgetSlice.actions;
+export const {
+	updateBalanceWithTransaction,
+	updategCardBudget,
+	changeBalanceWithTransaction,
+} = budgetSlice.actions;
 export default budgetSlice.reducer;

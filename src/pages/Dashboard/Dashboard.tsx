@@ -1,5 +1,10 @@
 import { BanknoteArrowDown, HandCoins, WalletMinimal } from "lucide-react";
-import { MyCard, SummaryWidget } from "../../components";
+import {
+	MyCard,
+	PieChartCategoryInfo,
+	PieChartGeneralInfo,
+	SummaryWidget,
+} from "../../components";
 import WidgetContainer from "../../components/widgets/WidgetContainer";
 import * as S from "./Dashboard.styled";
 import { SummaryWidgetProps } from "../../components/widgets/SummaryWidget/SummaryWidget";
@@ -61,6 +66,9 @@ function Dashboard() {
 				))}
 			</WidgetContainer>
 			<MyCard />
+			<PieChartGeneralInfo />
+			{/* <PieChartGeneralInfo/> */}
+			<PieChartCategoryInfo />
 		</S.Dashboard>
 	);
 }

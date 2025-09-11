@@ -22,7 +22,7 @@ const navigationItems: NavigationItem[] = [
 	{ icon: <BadgeDollarSign />, title: "Transactions", path: "/transactions" },
 	{ icon: <CreditCard />, title: "Cards", path: "/cards" },
 	{ icon: <Wallet />, title: "Budget", path: "" },
-	{ icon: <ChartNoAxesCombined />, title: "Charts", path: "" },
+	{ icon: <ChartNoAxesCombined />, title: "Charts", path: "/charts" },
 	{ icon: <UserRoundPen />, title: "Users", path: "" },
 	{ icon: <Settings />, title: "Settings", path: "" },
 ];

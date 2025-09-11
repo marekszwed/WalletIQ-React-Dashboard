@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { AddTransactionType } from "../../slices/TransactionFormSlice";
 
 export const AddTransactionSchema = yup.object({
 	title: yup
@@ -21,3 +22,5 @@ export const AddTransactionSchema = yup.object({
 		.max(100, "Description must be at most 100 characters")
 		.optional(),
 });
+
+export type AddTransactionFormData = Omit<AddTransactionType, "id" | "cardId">;
