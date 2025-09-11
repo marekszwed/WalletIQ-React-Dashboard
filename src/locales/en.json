@@ -29,5 +29,9 @@
 		"charts": "Charts",
 		"users": "Users",
 		"settings": "Settings"
+	},
+	"charts": {
+		"income": "income",
+		"outcome": "outcome"
 	}
 }

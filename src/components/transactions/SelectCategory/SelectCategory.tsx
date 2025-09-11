@@ -1,10 +1,11 @@
 import { UseFormRegister } from "react-hook-form";
 import * as S from "./SelectCategory.styled";
 import { AddTransactionType } from "../../slices/TransactionFormSlice";
+import { TransactionTypes } from "../../../helpers/types";
 
 type Props = {
 	register: UseFormRegister<Omit<AddTransactionType, "id" | "cardId">>;
-	transactionType: "income" | "outcome" | undefined;
+	transactionType: TransactionTypes | undefined;
 };
 
 const incomeItems = [

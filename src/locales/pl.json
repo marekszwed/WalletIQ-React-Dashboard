@@ -29,5 +29,9 @@
 		"charts": "Wykresy",
 		"users": "Użytkownicy",
 		"settings": "Ustawienia"
+	},
+	"charts": {
+		"income": "Przychody",
+		"outcome": "Wydatki"
 	}
 }

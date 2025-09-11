@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { setStorageElement } from "../../helpers/localStorage";
+import { LOCAL_STORAGE_KEYS } from "../../constants/constants";
 
 interface AddCardFormTypes {
 	id: string;
@@ -25,7 +27,7 @@ const cardFormSlice = createSlice({
 	reducers: {
 		cardData: (state, action: PayloadAction<AddCardFormTypes>) => {
 			state.cards.push(action.payload);
-			localStorage.setItem("cards", JSON.stringify(state.cards));
+			setStorageElement(LOCAL_STORAGE_KEYS.cards, state.cards);
 		},
 		deleteSingleItem: (
 			state,
@@ -36,7 +38,7 @@ const cardFormSlice = createSlice({
 				localStorage.removeItem("selectedCard");
 			}
 			state.cards = state.cards.filter((card) => card.id !== action.payload.id);
-			localStorage.setItem("cards", JSON.stringify(state.cards));
+			setStorageElement(LOCAL_STORAGE_KEYS.cards, state.cards);
 		},
 		clearData: (state) => {
 			state.cards = [];
@@ -46,7 +48,7 @@ const cardFormSlice = createSlice({
 		},
 		setSelectedCard: (state, action: PayloadAction<AddCardFormTypes>) => {
 			state.selectedCard = action.payload;
-			localStorage.setItem("selectedCard", JSON.stringify(state.selectedCard));
+			setStorageElement(LOCAL_STORAGE_KEYS.selectedCard, state.selectedCard);
 		},
 	},
 });

@@ -1,8 +1,9 @@
 import * as S from "./PieChartCategoryInfo.styled";
-import { theme } from "../../../styles/theme";
 import PieChartLayout from "../../Layout/PieChartLayout";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Store/store";
+import { chartConfig } from "../../../styles/chartConfig";
+import { useMemo } from "react";
 
 interface DataForChart {
 	name: string;
@@ -17,44 +18,35 @@ function PieChartCategoryInfo() {
 		(state: RootState) => state.card.selectedCard
 	);
 
-	if (!selectedCard) return null;
+	const data: DataForChart[] = useMemo(() => {
+		if (!selectedCard) return [];
 
-	const outcomes = transactions.filter(
-		(t) => t.transactionType === "outcome" && t.cardId === selectedCard.id
-	);
+		return transactions
+			.filter(
+				(t) => t.transactionType === "outcome" && t.cardId === selectedCard.id
+			)
+			.reduce<DataForChart[]>((acc, outcome) => {
+				const value = Math.abs(Number(outcome.amount));
+				const existing = acc.find((item) => item.name === outcome.category);
 
-	const data: DataForChart[] = [];
+				if (existing) {
+					existing.value += value;
+				} else {
+					acc.push({ name: outcome.category, value });
+				}
 
-	for (const outcome of outcomes) {
-		const value = Math.abs(Number(outcome.amount));
-		const exists = data.find((item) => item.name === outcome.category);
-		if (exists) {
-			exists.value += value;
-		} else {
-			data.push({ name: outcome.category, value: value });
-		}
-	}
-
-	const colors = [
-		theme.primaryColors.charts.blue,
-		theme.primaryColors.charts.green,
-		theme.primaryColors.charts.orange,
-		theme.primaryColors.charts.pink,
-		theme.primaryColors.charts.red500,
-		theme.primaryColors.charts.yellow,
-		theme.primaryColors.charts.blue800,
-		theme.primaryColors.charts.sky,
-		theme.primaryColors.charts.sand,
-	];
+				return acc;
+			}, []);
+	}, [transactions, selectedCard]);
 
 	return (
 		<S.Container>
 			<PieChartLayout
 				data={data}
-				colors={colors}
-				showLegend={true}
-				showTooltip={true}
-			></PieChartLayout>
+				colors={Object.values(chartConfig.colors.categoryPieChart)}
+				showLegend
+				showTooltip
+			/>
 		</S.Container>
 	);
 }

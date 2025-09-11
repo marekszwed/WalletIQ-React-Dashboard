@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AddTransactionType } from "./TransactionFormSlice";
+import { LOCAL_STORAGE_KEYS } from "../../constants/constants";
+import { setStorageElement } from "../../helpers/localStorage";
 
 interface BudgetData {
 	balance: number;
@@ -17,7 +19,7 @@ interface UpdateBudgetPayload {
 }
 
 const initialState: BudgetState = JSON.parse(
-	localStorage.getItem("budget") || "{}"
+	localStorage.getItem(LOCAL_STORAGE_KEYS.budget) || "{}"
 );
 
 const budgetSlice = createSlice({
@@ -46,7 +48,7 @@ const budgetSlice = createSlice({
 				state[cardId].balance -= transaction.amount;
 			}
 
-			localStorage.setItem("budget", JSON.stringify(state));
+			setStorageElement(LOCAL_STORAGE_KEYS.budget, state);
 		},
 		updategCardBudget: (
 			state,
@@ -60,7 +62,7 @@ const budgetSlice = createSlice({
 				};
 			}
 
-			localStorage.setItem("budget", JSON.stringify(state));
+			setStorageElement(LOCAL_STORAGE_KEYS.budget, state);
 		},
 
 		changeBalanceWithTransaction: (
@@ -81,7 +83,7 @@ const budgetSlice = createSlice({
 				state[cardId].balance += absAmount;
 			}
 
-			localStorage.setItem("budget", JSON.stringify(state));
+			setStorageElement(LOCAL_STORAGE_KEYS.budget, state);
 		},
 	},
 });
